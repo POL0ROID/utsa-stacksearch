@@ -21,11 +21,11 @@ class Search extends React.Component {
                     <input type="checkbox" name="isanswer" id="isanswer" value="" /><label>Answers</label><br />
                     Include: <input type="checkbox" name="includeaccepted" id="isanswer" value="" /><label>Accepted</label><input type="checkbox" name="includeother" value="" /><label>Other</label><br />
                     Minimum:<input type="datetime-local" name="datemin" id="datemin" /><label>Date</label><input type="number" name="scoremin" id="scoremin"/><label>Score</label><br />
-                    Maximum:<input type="datetime-local" name="datemax" id="datemin"/><label>Date</label><input type="number" name="scoremax" id="scoremax"/><label>Score</label><br />
-
-                	<input id="search" type="text" class="input" placeholder="Title" name="title" id="title"/><br />
-                    <input id="search" type="text" class="input" placeholder="Body" name="body" id="body"/><br />
-                    <input id="search" type="text" class="input" placeholder="Tags" name="tags" id="tags"/>
+                    Maximum:<input type="datetime-local" name="datemax" id="datemax" /><label>Date</label><input type="number" name="scoremax" id="scoremax"/><label>Score</label><br />
+                	<input type="text" class="input" placeholder="Title" name="title" id="title"/><br />
+                    <input type="text" class="input" placeholder="Body" name="body" id="body"/><br />
+                    <input type="text" class="input" placeholder="Tags" name="tags" id="tags"/><br />
+                    <input type="submit" name="submit" id="submit" value="Submit"></input>
                 </form>
             </div>
             </div>
