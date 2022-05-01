@@ -8,7 +8,7 @@ const router = new Router();
 // });
 
 
-router.get("/master", (ctx, next) => {
+router.get("/query", (ctx, next) => {
 	console.log("SERVER GOT REQUEST!");
 	ctx.body = "hello paul!!!";
 })
