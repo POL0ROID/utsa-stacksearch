@@ -44,7 +44,7 @@ class Search extends React.Component {
         const options = {
             method: 'POST',
             headers: {
-                'Accept': 'application/json',
+                'Accept': '*/*',
                 'Content-Type': 'application/json;charset=UTF-8'
             },
             body: JSON.stringify(this.state)
