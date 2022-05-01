@@ -8,13 +8,12 @@ const options = {
     },
     body: JSON.stringify(this.state)
 };
-
-class Search extends React.Component {
-
-    fetch(url, options)
+fetch(url, options)
         .then(response => {
             console.log(response.body);
         });
+
+class Search extends React.Component {
 
     constructor(props) {
         super(props);
