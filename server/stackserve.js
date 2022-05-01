@@ -11,7 +11,7 @@ router.get("/query", (ctx, next) => {
 	ctx.body = "hello paul!!!";
 })
 
-router.post("/query", (ctx, next) => {
+router.post("/", (ctx, next) => {
 	console.log("SERVER GOT POST REQUEST!");
 	console.log( "POST BODY", ctx.request.body );
 	console.log( "POST callMe: ", ctx.request.body.callMe );
