@@ -27,5 +27,6 @@ router.post("/query", (ctx, next) => {
 
 app.use( parser() );
 app.use( router.routes() );
+app.use( router.allowedMethods() );
 console.log("SERVER is RUNNING!");
 app.listen(3001);
