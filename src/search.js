@@ -1,6 +1,21 @@
 import React from 'react';
+const url = 'http://ec2-3-94-209-176.compute-1.amazonaws.com:3000/'
+const options = {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json;charset=UTF-8'
+    },
+    body: JSON.stringify(this.state)
+};
 
 class Search extends React.Component {
+
+    fetch(url, options)
+        .then(response => {
+            console.log(response.body);
+        });
+
     constructor(props) {
         super(props);
         this.state = {
@@ -22,7 +37,8 @@ class Search extends React.Component {
             ascoremax: "",
             title: "",
             body: "",
-            tags: ""
+            tags: "", 
+            database: ""
         }
     }
 
@@ -35,9 +51,10 @@ class Search extends React.Component {
     }
 
     handleSubmit = (event) => {
-        alert('Submitted')
+        alert()
         event.preventDefault();
     }
+
 
     render() {
         console.log("Hello world: " , this.state);
