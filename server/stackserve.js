@@ -1,6 +1,7 @@
 const Koa = require('koa');
 const Router = require('@koa/router');
 const parser = require('koa-bodyparser')
+const cors = require('@koa/cors')
 const app = new Koa();
 const router = new Router();
 
@@ -27,6 +28,6 @@ router.post("/query", (ctx, next) => {
 
 app.use( parser() );
 app.use( router.routes() );
-app.use( router.allowedMethods() );
+app.use( cors() );
 console.log("SERVER is RUNNING!");
 app.listen(3001);
