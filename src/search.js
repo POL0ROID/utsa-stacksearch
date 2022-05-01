@@ -54,6 +54,12 @@ class Search extends React.Component {
     }
 
 
+    hhhandleSubmit = (event) => {
+      fetcQuery(event).then(movies => {
+        movies; // fetched movies
+      });
+    }
+
     render() {
         console.log("Hello world: " , this.state);
         return (
