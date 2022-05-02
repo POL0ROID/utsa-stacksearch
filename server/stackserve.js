@@ -18,8 +18,6 @@ router.post("/query", (ctx, next) => {
 	client.connect()
 	console.log("SERVER GOT POST REQUEST!");
 	console.log("POST BODY", ctx.request.body);
-	console.log("CTX", ctx);
-	console.log("NEXT", next);
 	const jstring = JSON.stringify(ctx.request.body);
 	const json = JSON.parse(jstring);
 	const query = queryconstruct(json);
@@ -29,6 +27,8 @@ router.post("/query", (ctx, next) => {
 		client.end()
 	});
 	ctx.body = "post hello paul!!!";
+	console.log("CTX", ctx);
+	console.log("NEXT", next);
 	next(ctx);
 })
 
