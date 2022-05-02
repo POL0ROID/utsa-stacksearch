@@ -25,8 +25,9 @@ router.post("/query", (ctx, next) => {
 	console.log(json);
 	console.log(query);
 	client.query(query, (err, res) =>{
-		console.log(err, res)
-		client.end()
+		console.log(err, res);
+		console.log("MY NAME IS GREGORY!!");
+		client.end();
 	});
 	ctx.body = "post hello paul!!!";
 	console.log("CTX", ctx);
@@ -42,7 +43,7 @@ function queryconstruct(json){
 	const scoremax = parseInt(json.scoremax) || null;
 	const datemin = json.datemin == null ? null : json.datemin;
 	const datemax = json.datemax == null ? null : json.datemax;
-	
+
 	const titlestring = (json.title != "") ? fieldInjector(json.title.split(" "), "Title", json.includequestion, json.includeanswer) : "";
 	const bodystring = (json.body != "") ? fieldInjector(json.body.split(" "), "Body", json.includequestion, json.includeanswer) : "";
 	const tagstring = (json.tags != "") ? fieldInjector(json.tags.split(" "), "Tags", json.includequestion, json.includeanswer) : "";
