@@ -69,7 +69,7 @@ function queryconstruct(json){
 }
 
 function checkInjector(bool1, bool2, bool3, type){
-	const outstring = `(PostTypeId = ${type}`;
+	let outstring = `(PostTypeId = ${type}`;
 	if (bool1 == true){
 		if (bool2 == true){
 			if (bool3 == false){
@@ -87,7 +87,7 @@ function checkInjector(bool1, bool2, bool3, type){
 }
 
 function rangeInjector(boolq, boola, min, max){
-	const outstring = "";
+	let outstring = "";
 	if (boolq == true){
 		outstring += `AND ( 
 			((ViewCount BETWEEN ${min} AND ${max}) 
@@ -102,7 +102,7 @@ function rangeInjector(boolq, boola, min, max){
 }
 
 function fieldInjector(textarray, field, boolq){
-	const outstring;
+	let outstring;
 	if ((textarray[0] == "") || ((field == "Title" || field == "Tags") && boolq == false)){
 		outstring = ""
 	}
