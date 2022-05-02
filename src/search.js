@@ -76,8 +76,8 @@ class Search extends React.Component {
                     Include:
                      <input type="checkbox" name="includesatisfied" id="includesatisfied" value={this.state.includesatisfied} onChange={this.handleChange}/><label>Satisfied</label>
                      <input type="checkbox" name="includeunsatisfied" id="includeunsatisfied" value={this.state.includeunsatisfied} onChange={this.handleChange}/><label>Unsatisfied</label><br />
-                     <label>Minimum Views</label><input type="text" name="viewsmin" id="viewsmin" size="3" value={this.state.viewsmin} onChange={this.handleChange}/><br />
-                     <label>Maximum Views</label><input type="text" name="viewsmax" id="viewsmax" size="3" value={this.state.viewsmax} onChange={this.handleChange}/><br />
+                     <label>Minimum Views</label><input type="text" name="viewsmin" id="viewsmin" size="2" value={this.state.viewsmin} onChange={this.handleChange}/><br />
+                     <label>Maximum Views</label><input type="text" name="viewsmax" id="viewsmax" size="2" value={this.state.viewsmax} onChange={this.handleChange}/><br />
                      <label>Tags</label><textarea name="tags" id="tags" rows="1" value={this.state.tags} onChange={this.handleChange}/>< br/>
                      <label>Title</label><textarea name="title" id="title" rows="1" value={this.state.title} onChange={this.handleChange}/>< br/>
                     <hr />
@@ -87,9 +87,9 @@ class Search extends React.Component {
                     <input type="checkbox" name="includeother" value={this.state.includeother} onChange={this.handleChange}/><label>Other</label><br />
                     <hr />
                     Minimum:<input type="datetime-local" name="datemin" id="adatemin" value={this.state.adatemin} onChange={this.handleChange}/><label>Date</label>
-                            <input type="text" name="scoremin" id="ascoremin" value={this.state.ascoremin} onChange={this.handleChange}/><label>Score</label><br />
+                            <input type="text" name="scoremin" id="ascoremin" size="2" value={this.state.ascoremin} onChange={this.handleChange}/><label>Score</label><br />
                     Maximum:<input type="datetime-local" name="datemax" id="adatemax" value={this.state.adatemax} onChange={this.handleChange}/><label>Date</label>
-                            <input type="text" name="scoremax" id="ascoremax" value={this.state.ascoremax} onChange={this.handleChange}/><label>Score</label><br />
+                            <input type="text" name="scoremax" id="ascoremax" size="2" value={this.state.ascoremax} onChange={this.handleChange}/><label>Score</label><br />
                     <textarea name="body" id="body" rows="4" value={this.state.body} onChange={this.handleChange}/>< br/>
                     <input type="submit" name="submit" id="submit" value="Submit"></input>
                 </form>
