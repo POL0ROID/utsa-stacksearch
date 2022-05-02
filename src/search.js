@@ -63,14 +63,14 @@ class Search extends React.Component {
     render() {
         console.log("Hello world: " , this.state);
         return (
-            <div style ={{textAlign: 'right'}}>
+            <div style ={{textAlign: 'center'}}>
                 <div style={{margin: '4em'}} />
                 <h1>StackExchange Analytic Search</h1>
 			<p>A data tool to facilitate research of the StackExchange Q&A database, best used to compare patterns between its communities and between queries. <br />
             This database is current up to March 7, 2022 and made available through the Internet Archive under a Creative Commons license (CC-BY-SA).<br />
             As a derivative work, all relevant source code for this tool can be found (here) as required by the license.<br />
             No posts are used directly without attribution. For a more content-centric search, see StackExchange's own search, and consider creating an account to see more than 500 results.</p>
-            <div class="form-container">
+            <div class="form-container" style={{textAlign: 'left'}}>
             	<form class="form" onSubmit={this.handleSubmit}>
                 	<input type="checkbox" name="includequestion" id="includequestion" value={this.state.isquestion} onChange={this.handleChange}/><label>Questions</label><br />
                     Include:
