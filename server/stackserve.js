@@ -68,7 +68,7 @@ function queryconstruct(json){
 						GROUP BY
 							PostTypeId,
 							year,
-							mmonth,
+							month,
 							ParentOrChild,
 							Score,
 							ViewCount;`;
