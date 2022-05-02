@@ -24,7 +24,7 @@ class Search extends React.Component {
             title: "",
             body: "",
             tags: "", 
-            database: ""
+            table: ""
         }
     }
 
@@ -72,29 +72,25 @@ class Search extends React.Component {
             No posts are used directly without attribution. For a more content-centric search, see StackExchange's own search, and consider creating an account to see more than 500 results.</p>
             <div class="form-container">
             	<form class="form" onSubmit={this.handleSubmit}>
-                	<input type="checkbox" name="includequestion" id="includequestion" value={this.state.isquestion} onChange={this.handleChange}/>
-                    <label>Questions</label><br />
+                	<input type="checkbox" name="includequestion" id="includequestion" value={this.state.isquestion} onChange={this.handleChange}/><label>Questions</label><br />
                     Include:
                      <input type="checkbox" name="includesatisfied" id="includesatisfied" value={this.state.includesatisfied} onChange={this.handleChange}/><label>Satisfied</label>
                      <input type="checkbox" name="includeunsatisfied" id="includeunsatisfied" value={this.state.includeunsatisfied} onChange={this.handleChange}/><label>Unsatisfied</label><br />
-                    Minimum:<input type="datetime-local" name="datemin" id="qdatemin" value={this.state.qdatemin} onChange={this.handleChange}/><label>Date</label>
-                            <input type="text" name="scoremin" id="qscoremin" value={this.state.qscoremin} onChange={this.handleChange}/><label>Score</label>
-                            <input type="text" name="viewsmin" id="viewsmin" value={this.state.viewsmin} onChange={this.handleChange}/><label>Views</label><br />
-                    Maximum:<input type="datetime-local" name="datemax" id="qdatemax" value={this.state.qdatemax} onChange={this.handleChange}/><label>Date</label>
-                            <input type="text" name="scoremax" id="qscoremax" value={this.state.qscoremax} onChange={this.handleChange}/><label>Score</label>
-                            <input type="text" name="viewsmax" id="viewsmax" value={this.state.viewsmax} onChange={this.handleChange}/><label>Views</label>
+                    <input type="text" name="viewsmin" id="viewsmin" value={this.state.viewsmin} onChange={this.handleChange}/><label>Minimum Views</label><br />
+                    <input type="text" name="viewsmax" id="viewsmax" value={this.state.viewsmax} onChange={this.handleChange}/><label>Maximum Views</label>
+                    <textarea name="tags" id="tags" value={this.state.tags} onChange={this.handleChange}/>< br/>
+                    <textarea name="title" id="title" value={this.state.title} onChange={this.handleChange}/>< br/>
                     <hr />
                     <input type="checkbox" name="includeanswer" id="includeanswer" value={this.state.includeanswer} onChange={this.handleChange}/><label>Answers</label><br />
                     Include:
                     <input type="checkbox" name="includeaccepted" id="includeaccepted" value={this.state.includeaccepted} onChange={this.handleChange}/><label>Accepted</label>
                     <input type="checkbox" name="includeother" value={this.state.includeother} onChange={this.handleChange}/><label>Other</label><br />
+                    <hr />
                     Minimum:<input type="datetime-local" name="datemin" id="adatemin" value={this.state.adatemin} onChange={this.handleChange}/><label>Date</label>
                             <input type="text" name="scoremin" id="ascoremin" value={this.state.ascoremin} onChange={this.handleChange}/><label>Score</label><br />
                     Maximum:<input type="datetime-local" name="datemax" id="adatemax" value={this.state.adatemax} onChange={this.handleChange}/><label>Date</label>
                             <input type="text" name="scoremax" id="ascoremax" value={this.state.ascoremax} onChange={this.handleChange}/><label>Score</label><br />
-                    <textarea name="title" id="title" value={this.state.title} onChange={this.handleChange}/>
-                    <textarea name="body" id="body" rows="4" value={this.state.body} onChange={this.handleChange}/>
-                    <textarea name="tags" id="tags" value={this.state.tags} onChange={this.handleChange}/>
+                    <textarea name="body" id="body" rows="4" value={this.state.body} onChange={this.handleChange}/>< br/>
                     <input type="submit" name="submit" id="submit" value="Submit"></input>
                 </form>
             </div>
