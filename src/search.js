@@ -86,9 +86,9 @@ class Search extends React.Component {
                     <input type="checkbox" name="includeaccepted" id="includeaccepted" value={this.state.includeaccepted} onChange={this.handleChange}/><label>Accepted</label>
                     <input type="checkbox" name="includeother" value={this.state.includeother} onChange={this.handleChange}/><label>Other</label><br />
                     <hr />
-                    Minimum:<input type="datetime-local" name="datemin" id="adatemin" value={this.state.adatemin} onChange={this.handleChange}/><label>Date</label>
+                    Minimum:<input type="datetime-local" name="datemin" id="adatemin" value={this.state.adatemin} onChange={this.handleChange}/><label>Date </label>
                             <input type="text" name="scoremin" id="ascoremin" size="2" value={this.state.ascoremin} onChange={this.handleChange}/><label>Score</label><br />
-                    Maximum:<input type="datetime-local" name="datemax" id="adatemax" value={this.state.adatemax} onChange={this.handleChange}/><label>Date</label>
+                    Maximum:<input type="datetime-local" name="datemax" id="adatemax" value={this.state.adatemax} onChange={this.handleChange}/><label>Date </label>
                             <input type="text" name="scoremax" id="ascoremax" size="2" value={this.state.ascoremax} onChange={this.handleChange}/><label>Score</label><br />
                     <textarea name="body" id="body" rows="4" value={this.state.body} onChange={this.handleChange}/>< br/>
                     <input type="submit" name="submit" id="submit" value="Submit"></input>
