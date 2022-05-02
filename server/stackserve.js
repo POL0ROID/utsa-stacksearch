@@ -32,9 +32,9 @@ router.post("/query", (ctx, next) => {
 })
 
 function queryconstruct(json){
-	const titlestring = (json.title != "") ? fieldInjector(json.title.split(" "), "Title") : "";
-	const bodystring = (json.body != "") ? fieldInjector(json.body.split(" "), "Body") : "";
-	const tagstring = (json.tags != "") ? fieldInjector(json.tags.split(" "), "Tags") : "";
+	const titlestring = (json.title != "") ? fieldInjector(json.title.split(" "), "Title", json.includequestion, json.includeanswer) : "";
+	const bodystring = (json.body != "") ? fieldInjector(json.body.split(" "), "Body", json.includequestion, json.includeanswer) : "";
+	const tagstring = (json.tags != "") ? fieldInjector(json.tags.split(" "), "Tags", json.includequestion, json.includeanswer) : "";
 	const viewstring = rangeInjector(json.includequestion, json.includeanswer, json.viewsmin, json.viewsmax);
 	const qstring = checkInjector(json.includequestion, json.includesatisfied, json.includeunsatisfied, 1);
 	const astring = checkInjector(json.includeanswer, json.includeaccepted, json.includeother, 2);
@@ -58,7 +58,7 @@ function queryconstruct(json){
 							${titlestring}
 							${bodystring}
 							${tagstring}
-							${viewstring} 
+							${viewstring}
 						GROUP BY
 							PostTypeId,
 							EXTRACT(YEAR FROM CreationDate),
@@ -82,7 +82,7 @@ function checkInjector(bool1, bool2, bool3, type){
 				outstring += " AND ParentOrChild IS NULL";
 			}
 		}
-		outstring += ");";
+		outstring += ") ";
 	}
 	return outstring;
 }
@@ -96,15 +96,15 @@ function rangeInjector(boolq, boola, min, max){
 						OR (${min} IS NULL AND ${max} >= ViewCount) 
 						OR (${max} IS NULL AND ${min} <= ViewCount))`;
 		if (boola == true){
-			outstring += "OR (ViewCount IS NULL)";
+			outstring += "OR (ViewCount IS NULL) ";
 		}
 	}
 	return outstring;
 }
 
-function fieldInjector(textarray, field, boolq){
+function fieldInjector(textarray, field, boolq, boola){
 	let outstring;
-	if ((textarray[0] == "") || ((field == "Title" || field == "Tags") && boolq == false)){
+	if ((textarray[0] == "") || ((field == "Title" || field == "Tags") && boolq == false && boola == true)){
 		outstring = ""
 	}
 	else{
@@ -115,7 +115,7 @@ function fieldInjector(textarray, field, boolq){
 				outstring += " AND ";
 			}
 		}
-		outstring += ");";
+		outstring += ") ";
 	}
 	return outstring;
 };
