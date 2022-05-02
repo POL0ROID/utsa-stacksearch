@@ -67,7 +67,6 @@ function queryconstruct(json){
 							${titlestring}
 							${bodystring}
 							${tagstring}
-							${viewstring}
 						GROUP BY
 							PostTypeId,
 							EXTRACT(YEAR FROM CreationDate),
