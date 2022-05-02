@@ -47,7 +47,7 @@ function queryconstruct(json){
 	const qstring = checkInjector(json.includequestion, json.includesatisfied, json.includeunsatisfied, 1);
 	const astring = checkInjector(json.includeanswer, json.includeaccepted, json.includeother, 2);
 
-	const querystring = `SELECT PostTypeId, 
+	let querystring = `SELECT PostTypeId, 
 								EXTRACT(YEAR FROM CreationDate), 
 								EXTRACT(MONTH FROM CreationDate), 
 								ParentOrChild,
