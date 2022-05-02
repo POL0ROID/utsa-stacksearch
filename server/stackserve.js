@@ -59,6 +59,7 @@ function queryconstruct(json){
 							${bodystring}
 							${tagstring}
 							${viewstring}
+						blooblee :)
 						GROUP BY
 							PostTypeId,
 							EXTRACT(YEAR FROM CreationDate),
