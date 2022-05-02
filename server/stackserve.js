@@ -65,7 +65,7 @@ function queryconstruct(json){
 							EXTRACT(MONTH FROM CreationDate),
 							ParentOrChild,
 							Score,
-							ViewCount`;
+							ViewCount;`;
 	return querystring;
 }
 
