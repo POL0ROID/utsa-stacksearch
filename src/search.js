@@ -63,7 +63,7 @@ class Search extends React.Component {
     render() {
         console.log("Hello world: " , this.state);
         return (
-            <div style ={{textAlign: 'center'}}>
+            <div style ={{textAlign: 'left'}}>
                 <div style={{margin: '4em'}} />
                 <h1>StackExchange Analytic Search</h1>
 			<p>A data tool to facilitate research of the StackExchange Q&A database, best used to compare patterns between its communities and between queries. <br />
