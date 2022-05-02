@@ -25,7 +25,9 @@ router.post("/query", (ctx, next) => {
 	console.log(json);
 	console.log(query);
 	client.query(query, (err, res) =>{
+		console.log("Jeb!");
 		console.log(err, res);
+		console.log("Jeb!");
 		client.end();
 	});
 	next(ctx);
