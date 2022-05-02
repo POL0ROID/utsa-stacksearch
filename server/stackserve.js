@@ -16,20 +16,13 @@ router.post("/query", (ctx, next) => {
 		port: 5432,
 	})
 	client.connect()
-	console.log("SERVER GOT POST REQUEST!");
-	console.log("POST BODY", ctx.request.body);
 	const jstring = JSON.stringify(ctx.request.body);
 	const json = JSON.parse(jstring);
 	const query = queryconstruct(json);
-	console.log(jstring);
-	console.log(json);
-	console.log(query);
 	client.query(query, (err, res) =>{
-		console.log(err, res);
 		client.end();
 		app.use(async ctx => {
 			ctx.body = res;
-			console.log("Full through?");
 		});
 	});
 	next(ctx);
@@ -52,8 +45,8 @@ function queryconstruct(json){
 	const astring = checkInjector(json.includeanswer, json.includeaccepted, json.includeother, 2);
 
 	let querystring = `SELECT PostTypeId, 
-								EXTRACT(YEAR FROM CreationDate), 
-								EXTRACT(MONTH FROM CreationDate), 
+								EXTRACT(YEAR FROM CreationDate) AS year, 
+								EXTRACT(MONTH FROM CreationDate) AS month, 
 								ParentOrChild,
 								Score,
 								ViewCount,
@@ -74,8 +67,8 @@ function queryconstruct(json){
 							${viewstring}
 						GROUP BY
 							PostTypeId,
-							EXTRACT(YEAR FROM CreationDate),
-							EXTRACT(MONTH FROM CreationDate),
+							EXTRACT(YEAR FROM CreationDate) AS year,
+							EXTRACT(MONTH FROM CreationDate) AS month,
 							ParentOrChild,
 							Score,
 							ViewCount;`;
@@ -137,5 +130,5 @@ function fieldInjector(textarray, field, boolq, boola){
 app.use( parser() );
 app.use( cors() );
 app.use( router.routes() );
-console.log("SERVER is RUNNING!");
+console.log("Server is listening.");
 app.listen(3001);
