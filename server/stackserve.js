@@ -65,8 +65,8 @@ function queryconstruct(json){
 										OR (${scoremin} IS NULL AND ${scoremax} >= Score) 
 										OR (${scoremax} IS NULL AND ${scoremin} <= Score)) 
 							${titlestring}
-							${bodystring}
 							${tagstring}
+							${viewstring}
 						GROUP BY
 							PostTypeId,
 							EXTRACT(YEAR FROM CreationDate),
