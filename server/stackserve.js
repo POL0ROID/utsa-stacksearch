@@ -25,11 +25,10 @@ router.post("/query", (ctx, next) => {
 	console.log(json);
 	console.log(query);
 	client.query(query, (err, res) =>{
-		console.log("Jeb!");
 		console.log(err, res);
-		console.log("Jeb!");
 		client.end();
 	});
+	console.log(res);
 	next(ctx);
 })
 
@@ -132,9 +131,10 @@ function fieldInjector(textarray, field, boolq, boola){
 	return outstring;
 };
 
-//app.use(async ctx => {
-//	ctx.body = ctx.request.body;
-//});
+app.use(async ctx => {
+	ctx.body = res;
+	console.log("Full through?");
+});
 
 app.use( parser() );
 app.use( cors() );
