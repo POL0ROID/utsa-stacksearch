@@ -49,7 +49,7 @@ function queryconstruct(json){
 								ViewCount,
 								COUNT(*) 
 						FROM ${json.table} 
-						WHERE ((${qstring} OR ${astring})
+						WHERE (${qstring} OR ${astring})
 							AND ((CreationDate BETWEEN ${json.datemin} AND ${json.datemax}) 
 												OR (${json.datemin} IS NULL AND ${json.datemax} IS NULL) 
 												OR (${json.datemin} IS NULL AND ${json.datemax} >= CreationDate) 
@@ -61,7 +61,7 @@ function queryconstruct(json){
 							${titlestring}
 							${bodystring}
 							${tagstring}
-							${viewstring})
+							${viewstring}
 						GROUP BY
 							PostTypeId,
 							EXTRACT(YEAR FROM CreationDate),
