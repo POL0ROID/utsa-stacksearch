@@ -1,8 +1,9 @@
 const Koa = require('koa');
 const Router = require('@koa/router');
-const parser = require('koa-bodyparser')
 const cors = require('@koa/cors')
 const { Pool, Client } = require('pg')
+const https = require('https');
+const fs = require('fs');
 
 const app = new Koa();
 const router = new Router();
@@ -128,7 +129,6 @@ function fieldInjector(textarray, field, boolq, boola){
 	return outstring;
 };
 
-app.use( parser() );
 app.use( cors() );
 app.use( router.routes() );
 console.log("Server is listening.");
