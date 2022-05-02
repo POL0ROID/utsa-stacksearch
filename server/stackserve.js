@@ -17,10 +17,11 @@ router.post("/query", (ctx, next) => {
 	})
 	client.connect()
 	console.log("SERVER GOT POST REQUEST!");
-	console.log("POST BODY", ctx.request.body );
+	console.log("POST BODY", ctx.request.body);
 	console.log("CTX", ctx);
 	console.log("NEXT", next);
-	const json = JSON.parse(ctx.request.body);
+	const jstring = JSON.stringify(ctx.request.body);
+	const json = JSON.parse(jstring);
 	const query = queryconstruct(json);
 	client.query(query, (err, res) =>{
 		console.log(err, res)
