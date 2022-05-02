@@ -67,7 +67,7 @@ function queryconstruct(json){
 							${titlestring}
 							${bodystring}
 							${tagstring}
-							${viewstring})
+							${viewstring}
 						GROUP BY
 							PostTypeId,
 							EXTRACT(YEAR FROM CreationDate),
@@ -77,18 +77,6 @@ function queryconstruct(json){
 							ViewCount;`;
 	return querystring;
 }
-
-((PostTypeId = 1 OR (PostTypeId = 2)
-                                                        AND ((CreationDate BETWEEN null AND null)
-                                                                                                OR (null IS NULL AND null IS NULL)
-                                                                                                OR (null IS NULL AND null >= CreationDate)
-                                                                                                OR (null IS NULL AND null <= CreationDate))
-                                                        AND ((Score BETWEEN null AND null)
-                                                                                OR (null IS NULL AND null IS NULL)
-                                                                                OR (null IS NULL AND null >= Score)
-                                                                                OR (null IS NULL AND null <= Score))
-
-                                                        AND ((Body LIKE '% fat %'))
 
 
 
