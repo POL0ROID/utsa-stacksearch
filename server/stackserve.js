@@ -67,8 +67,8 @@ function queryconstruct(json){
 							${viewstring}
 						GROUP BY
 							PostTypeId,
-							EXTRACT(YEAR FROM CreationDate) AS year,
-							EXTRACT(MONTH FROM CreationDate) AS month,
+							year,
+							mmonth,
 							ParentOrChild,
 							Score,
 							ViewCount;`;
