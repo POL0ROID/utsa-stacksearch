@@ -76,8 +76,8 @@ class Search extends React.Component {
                     Include:
                      <input type="checkbox" name="includesatisfied" id="includesatisfied" value={this.state.includesatisfied} onChange={this.handleChange}/><label>Satisfied</label>
                      <input type="checkbox" name="includeunsatisfied" id="includeunsatisfied" value={this.state.includeunsatisfied} onChange={this.handleChange}/><label>Unsatisfied</label><br />
-                     <label>Minimum Views</label><input type="text" name="viewsmin" id="viewsmin" columns="1" value={this.state.viewsmin} onChange={this.handleChange}/><br />
-                     <label>Maximum Views</label><input type="text" name="viewsmax" id="viewsmax" columns="1" value={this.state.viewsmax} onChange={this.handleChange}/><br />
+                     <label>Minimum Views</label><input type="text" name="viewsmin" id="viewsmin" size="3" value={this.state.viewsmin} onChange={this.handleChange}/><br />
+                     <label>Maximum Views</label><input type="text" name="viewsmax" id="viewsmax" size="3" value={this.state.viewsmax} onChange={this.handleChange}/><br />
                      <label>Tags</label><textarea name="tags" id="tags" rows="1" value={this.state.tags} onChange={this.handleChange}/>< br/>
                      <label>Title</label><textarea name="title" id="title" rows="1" value={this.state.title} onChange={this.handleChange}/>< br/>
                     <hr />
