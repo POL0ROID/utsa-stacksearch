@@ -35,12 +35,21 @@ router.post("/query", (ctx, next) => {
 })
 
 function queryconstruct(json){
+
+	const viewsmin = parseInt(json.viewsmin) || null;
+	const viewsmax = parseInt(json.viewsmax) || null;
+	const scoremin = parseInt(json.scoremin) || null;
+	const scoremax = parseInt(json.scoremax) || null;
+	const datemin = json.datemin == null ? null : json.datemin;
+	const datemax = json.datemax == null ? null : json.datemax;
+	
 	const titlestring = (json.title != "") ? fieldInjector(json.title.split(" "), "Title", json.includequestion, json.includeanswer) : "";
 	const bodystring = (json.body != "") ? fieldInjector(json.body.split(" "), "Body", json.includequestion, json.includeanswer) : "";
 	const tagstring = (json.tags != "") ? fieldInjector(json.tags.split(" "), "Tags", json.includequestion, json.includeanswer) : "";
-	const viewstring = rangeInjector(json.includequestion, json.includeanswer, json.viewsmin, json.viewsmax);
+	const viewstring = rangeInjector(json.includequestion, json.includeanswer, viewsmin, viewsmax);
 	const qstring = checkInjector(json.includequestion, json.includesatisfied, json.includeunsatisfied, 1);
 	const astring = checkInjector(json.includeanswer, json.includeaccepted, json.includeother, 2);
+
 	const querystring = `SELECT PostTypeId, 
 								EXTRACT(YEAR FROM CreationDate), 
 								EXTRACT(MONTH FROM CreationDate), 
@@ -50,14 +59,14 @@ function queryconstruct(json){
 								COUNT(*) 
 						FROM ${json.table} 
 						WHERE (${qstring} OR ${astring})
-							AND ((CreationDate BETWEEN ${json.datemin} AND ${json.datemax}) 
-												OR (${json.datemin} IS NULL AND ${json.datemax} IS NULL) 
-												OR (${json.datemin} IS NULL AND ${json.datemax} >= CreationDate) 
-												OR (${json.datemax} IS NULL AND ${json.datemin} <= CreationDate)) 
-							AND ((Score BETWEEN ${json.scoremin} AND ${json.scoremax}) 
-										OR (${json.scoremin} IS NULL AND ${json.scoremax} IS NULL) 
-										OR (${json.scoremin} IS NULL AND ${json.scoremax} >= Score) 
-										OR (${json.scoremax} IS NULL AND ${json.scoremin} <= Score)) 
+							AND ((CreationDate BETWEEN ${datemin} AND ${datemax}) 
+												OR (${datemin} IS NULL AND ${datemax} IS NULL) 
+												OR (${datemin} IS NULL AND ${datemax} >= CreationDate) 
+												OR (${datemax} IS NULL AND ${datemin} <= CreationDate)) 
+							AND ((Score BETWEEN ${scoremin} AND ${scoremax}) 
+										OR (${scoremin} IS NULL AND ${scoremax} IS NULL) 
+										OR (${scoremin} IS NULL AND ${scoremax} >= Score) 
+										OR (${scoremax} IS NULL AND ${scoremin} <= Score)) 
 							${titlestring}
 							${bodystring}
 							${tagstring}
