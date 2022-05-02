@@ -20,6 +20,7 @@ router.post("/query", (ctx, next) => {
 	const json = JSON.parse(jstring);
 	const query = queryconstruct(json);
 	client.query(query, (err, res) =>{
+		console.log(err, res);
 		client.end();
 		app.use(async ctx => {
 			ctx.body = res;
