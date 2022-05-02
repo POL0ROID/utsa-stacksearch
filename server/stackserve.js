@@ -32,7 +32,6 @@ router.post("/query", (ctx, next) => {
 			console.log("Full through?");
 		});
 	});
-	console.log(res);
 	next(ctx);
 })
 
