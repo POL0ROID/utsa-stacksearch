@@ -55,7 +55,7 @@ function queryconstruct(json){
 								ViewCount,
 								COUNT(*) 
 						FROM ${json.table} 
-						WHERE (${qstring} OR ${astring})
+						WHERE (${qstring} OR ${astring}) 
 							AND ((CreationDate BETWEEN ${datemin} AND ${datemax}) 
 												OR (${datemin} IS NULL AND ${datemax} IS NULL) 
 												OR (${datemin} IS NULL AND ${datemax} >= CreationDate) 
@@ -81,7 +81,7 @@ function queryconstruct(json){
 
 
 function checkInjector(bool1, bool2, bool3, type){
-	let outstring = `(PostTypeId = ${type}`;
+	let outstring = `PostTypeId = ${type}`;
 	if (bool1 == true){
 		if (bool2 == true){
 			if (bool3 == false){
@@ -93,7 +93,6 @@ function checkInjector(bool1, bool2, bool3, type){
 				outstring += " AND ParentOrChild IS NULL";
 			}
 		}
-		outstring += ") ";
 	}
 	return outstring;
 }
