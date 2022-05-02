@@ -26,12 +26,8 @@ router.post("/query", (ctx, next) => {
 	console.log(query);
 	client.query(query, (err, res) =>{
 		console.log(err, res);
-		console.log("MY NAME IS GREGORY!!");
 		client.end();
 	});
-	ctx.body = "post hello paul!!!";
-	console.log("CTX", ctx);
-	console.log("NEXT", next);
 	next(ctx);
 })
 
@@ -79,6 +75,7 @@ function queryconstruct(json){
 							ParentOrChild,
 							Score,
 							ViewCount;`;
+	querystring = `SELECT PostTypeId, EXTRACT(YEAR FROM CreationDate), EXTRACT(MONTH FROM CreationDate), ParentOrChild, Score, ViewCount, COUNT(*) FROM ${json.table}  WHERE (${qstring} OR ${astring}) AND ((CreationDate BETWEEN ${datemin} AND ${datemax}) OR (${datemin} IS NULL AND ${datemax} IS NULL) OR (${datemin} IS NULL AND ${datemax} >= CreationDate) OR (${datemax} IS NULL AND ${datemin} <= CreationDate)) AND ((Score BETWEEN ${scoremin} AND ${scoremax}) OR (${scoremin} IS NULL AND ${scoremax} IS NULL) OR (${scoremin} IS NULL AND ${scoremax} >= Score) OR (${scoremax} IS NULL AND ${scoremin} <= Score)) ${titlestring} ${bodystring} ${tagstring} ${viewstring} GROUP BY PostTypeId, EXTRACT(YEAR FROM CreationDate), EXTRACT(MONTH FROM CreationDate), ParentOrChild, Score, ViewCount;`
 	return querystring;
 }
 
