@@ -28,14 +28,37 @@ router.post("/stackserve.js", (ctx, next) => {
 	console.log("Connected.");
 	const jstring = JSON.stringify(ctx.request.body);
 	const json = JSON.parse(jstring);
-	const query = queryconstruct(json);
-	client.query(query, (err, res) =>{
+	const basequery = queryconstruct(json);
+	const qandaquery = "SELECT PostTypeId, ParentOrChild, COUNT(*) INTO #MyQuery2 FROM #MyQuery GROUP BY PostTypeId, ParentOrChild;";
+	const totalquery = "SELECT PostTypeId, COUNT(*) FROM #MyQuery2 GROUP BY PostTypeId;";
+	const viewquery = "SELECT ViewCount, COUNT(*) FROM #MyQuery GROUP BY ViewCount;";
+	const scorequery = "SELECT Score, COUNT(*) FROM #MyQuery GROUP BY Score;";
+	const datequery = "SELECT year, month, COUNT(*) FROM #MyQuery GROUP BY year, month;";
+	result1 = client.query(basequery, (err, res) =>){
 		console.log(err, res);
-		client.end();
-		app.use(async ctx => {
+	}
+	result2 = client.query(qandaquery, (err, res) =>){
+		console.log(err, res);
+	}
+	result3 = client.query(totalquery, (err, res) =>){
+		console.log(err, res);
+	}
+	result4 = client.query(viewquery, (err, res) =>){
+		console.log(err, res);
+	}
+	result5 = client.query(scorequery, (err, res) =>){
+		console.log(err, res);
+	}
+	result6 = client.query(datequery, (err, res) =>){
+		console.log(err, res);
+	}
+	res7 = "{ " + JSON.stringify(result2) + " " + JSON.stringify(result3) + " " + JSON.stringify(result4) + " " + JSON.stringify(result5) + " " + JSON.stringify(result6) + " }";
+	res = JSON.parse(res7);
+	app.use(async ctx => {
 			ctx.body = res;
 		});
 	});
+	client.end();
 	next(ctx);
 })
 
@@ -62,7 +85,7 @@ function queryconstruct(json){
 								ParentOrChild,
 								Score,
 								ViewCount,
-								COUNT(*) 
+						INTO #MyQuery 
 						FROM ${json.table} 
 						WHERE (${qstring} OR ${astring}) 
 							AND ((CreationDate BETWEEN ${datemin} AND ${datemax}) 
@@ -76,14 +99,7 @@ function queryconstruct(json){
 							${titlestring}
 							${bodystring}
 							${tagstring}
-							${viewstring}
-						GROUP BY
-							PostTypeId,
-							year,
-							month,
-							ParentOrChild,
-							Score,
-							ViewCount;`;
+							${viewstring};`;
 	return querystring;
 }
 
@@ -115,7 +131,7 @@ function rangeInjector(boolq, boola, min, max){
 						OR (${min} IS NULL AND ${max} >= ViewCount) 
 						OR (${max} IS NULL AND ${min} <= ViewCount))`;
 		if (boola == true){
-			outstring += "OR (ViewCount IS NULL) ";
+			outstring += "OR (ViewCount IS NULL)";
 		}
 	}
 	return outstring;
