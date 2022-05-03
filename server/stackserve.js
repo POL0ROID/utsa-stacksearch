@@ -15,9 +15,10 @@ router.post("/query", (ctx, next) => {
 		database: 'stacks',
 		password: '0Mn0mn0m!',
 		port: 5432,
+		sslmode: require,
 		ssl: {
 			rejectUnauthorized: false,
-			ca: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/client.csr').toString(),
+			ca: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/global-bundle.pem').toString(),
 			key: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/key.pem').toString(),
 			cert: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/cert.pem').toString(),
 		}
@@ -125,7 +126,12 @@ function fieldInjector(textarray, field, boolq, boola){
 	else{
 		outstring = "AND ("
 		for(let i = 0; i < textarray.length; i++){
-			outstring += `(${field} LIKE '% ` + textarray[i] + " %')";
+			if(field == "Tags"){
+				outstring += `(${field} LIKE '%<${textarray[i]}>%')`;
+			}
+			else{
+				outstring += `(${field} LIKE '% ${textarray[i]} %')`;
+			}
 			if (i+1 != textarray.length){
 				outstring += " AND ";
 			}
