@@ -15,6 +15,12 @@ router.post("/query", (ctx, next) => {
 		database: 'stacks',
 		password: '0Mn0mn0m!',
 		port: 5432,
+		ssl: {
+			rejectUnauthorized: false,
+			ca: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/client.csr').toString(),
+			key: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/key.pem').toString(),
+			cert: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/cert.pem').toString(),
+		}
 	})
 	client.connect()
 	const jstring = JSON.stringify(ctx.request.body);
