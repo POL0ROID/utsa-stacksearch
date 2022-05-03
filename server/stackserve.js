@@ -23,7 +23,8 @@ router.post("/stackserve.js", (ctx, next) => {
 			cert: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/cert.pem').toString(),
 		}
 	})
-	client.connect()
+	client.connect();
+	console.log("Connected.");
 	const jstring = JSON.stringify(ctx.request.body);
 	const json = JSON.parse(jstring);
 	const query = queryconstruct(json);
