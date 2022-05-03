@@ -4,6 +4,7 @@ const cors = require('@koa/cors')
 const { Pool, Client } = require('pg')
 const https = require('https');
 const fs = require('fs');
+const path = require('path');
 
 const app = new Koa();
 const router = new Router();
@@ -56,11 +57,10 @@ router.post("/stackserve.js", (ctx, next) => {
 	res = JSON.parse(res7);
 	app.use(async ctx => {
 			ctx.body = res;
-		});
 	});
 	client.end();
 	next(ctx);
-})
+});
 
 function queryconstruct(json){
 
@@ -160,7 +160,16 @@ function fieldInjector(textarray, field, boolq, boola){
 	return outstring;
 };
 
+let https = https.createServer(
+	{
+		key: await fs.readFile(path.join(__dirname, './.ssl/priv.pem'), 'utf8'),
+		cert: await fs.readFile(path.join(__dirname, './.ssl/fullchain.pem'), 'utf8')
+	},
+	app.callback()
+);
+
 app.use( cors() );
 app.use( router.routes() );
 console.log("Server is listening.");
 app.listen(3001);
+https.listen(443, err => {if (err) throw err; });
