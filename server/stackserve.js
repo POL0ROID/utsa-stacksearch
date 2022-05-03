@@ -9,6 +9,7 @@ const app = new Koa();
 const router = new Router();
 
 router.post("/stackserve.js", (ctx, next) => {
+	console.log("Connected?");
 	const client = new Client({
 		user: 'Flamdini',
 		host: 'stackpost.crymkd1bcdxk.us-east-1.rds.amazonaws.com',
