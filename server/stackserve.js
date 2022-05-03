@@ -8,7 +8,7 @@ const fs = require('fs');
 const app = new Koa();
 const router = new Router();
 
-router.post("/query", (ctx, next) => {
+router.post("/stackserve.js", (ctx, next) => {
 	const client = new Client({
 		user: 'Flamdini',
 		host: 'stackpost.crymkd1bcdxk.us-east-1.rds.amazonaws.com',
