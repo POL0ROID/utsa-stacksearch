@@ -162,8 +162,8 @@ function fieldInjector(textarray, field, boolq, boola){
 
 let httpssl = https.createServer(
 	{
-		key: await fs.readFile(path.join(__dirname, './.ssl/priv.pem'), 'utf8'),
-		cert: await fs.readFile(path.join(__dirname, './.ssl/fullchain.pem'), 'utf8')
+		key: fs.readFileSync(path.join(__dirname, './.ssl/priv.pem'), 'utf8'),
+		cert: fs.readFileSync(path.join(__dirname, './.ssl/fullchain.pem'), 'utf8')
 	},
 	app.callback()
 );
