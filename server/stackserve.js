@@ -172,4 +172,4 @@ app.use( cors() );
 app.use( router.routes() );
 console.log("Server is listening.");
 app.listen(3001);
-https.listen(443, err => {if (err) throw err; });
+https.listen(443, err => {if (err) console.log(err); });
