@@ -43,7 +43,10 @@ class Search extends React.Component {
             headers: {
                 'Accept': '*/*',
                 'Content-Type': 'application/json;charset=UTF-8',
-                'max-age': '31536000; includeSubDomains'
+                'Access-Control-Allow-Origin': 'https://ec2-3-94-209-176.compute-1.amazonaws.com',
+                'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+                'Access-Control-Allow-Methods': 'POST',
+                'Access-Control-Allow-Credentials': true,
             },
             body: JSON.stringify(this.state)
         };
