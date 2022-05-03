@@ -45,8 +45,8 @@ function queryconstruct(json){
 	const viewsmax = parseInt(json.viewsmax) || null;
 	const scoremin = parseInt(json.scoremin) || null;
 	const scoremax = parseInt(json.scoremax) || null;
-	const datemin = json.datemin == null ? null : json.datemin;
-	const datemax = json.datemax == null ? null : json.datemax;
+	const datemin = json.datemin == "" ? null : json.datemin;
+	const datemax = json.datemax == "" ? null : json.datemax;
 
 	const titlestring = (json.title != "") ? fieldInjector(json.title.split(" "), "Title", json.includequestion, json.includeanswer) : "";
 	const bodystring = (json.body != "") ? fieldInjector(json.body.split(" "), "Body", json.includequestion, json.includeanswer) : "";

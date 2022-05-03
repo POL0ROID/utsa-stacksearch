@@ -8,19 +8,15 @@ class Search extends React.Component {
             includequestion: false,
             includesatisfied: false,
             includeunsatisfied: false,
-            qdatemin: null,
-            qscoremin: "",
             viewsmin: "",
-            qdatemax: null,
-            qscoremax: "",
             viewsmax: "",
             includeanswer: false,
             includeaccepted: false,
             includeother: false,
-            adatemin: null,
-            ascoremin: "",
-            adatemax: null,
-            ascoremax: "",
+            datemin: "",
+            scoremin: "",
+            datemax: "",
+            scoremax: "",
             title: "",
             body: "",
             tags: "", 
@@ -65,8 +61,8 @@ class Search extends React.Component {
             This database is current up to March 7, 2022 and made available through the Internet Archive under a Creative Commons license (CC-BY-SA).<br />
             As a derivative work, all relevant source code for this tool can be found (here) as required by the license.<br />
             No posts are used directly without attribution. For a more content-centric search, see StackExchange's own search, and consider creating an account to see more than 500 results.</p>
-            <div class="form-container" style={{textAlign: 'left'}}>
-            	<form class="form" onSubmit={this.handleSubmit}>
+            <div className="form-container" style={{textAlign: 'left'}}>
+            	<form className="form" onSubmit={this.handleSubmit}>
                 	<input type="checkbox" name="includequestion" id="includequestion" value={this.state.isquestion} onChange={this.handleChange}/><label>Questions</label><br />
                     Include:
                      <input type="checkbox" name="includesatisfied" id="includesatisfied" value={this.state.includesatisfied} onChange={this.handleChange}/><label>Satisfied</label>
@@ -81,10 +77,10 @@ class Search extends React.Component {
                     <input type="checkbox" name="includeaccepted" id="includeaccepted" value={this.state.includeaccepted} onChange={this.handleChange}/><label>Accepted</label>
                     <input type="checkbox" name="includeother" value={this.state.includeother} onChange={this.handleChange}/><label>Other</label><br />
                     <hr />
-                    Minimum:<input type="datetime-local" name="datemin" id="adatemin" value={this.state.adatemin} onChange={this.handleChange}/><label>Date </label>
-                            <input type="text" name="scoremin" id="ascoremin" size="2" value={this.state.ascoremin} onChange={this.handleChange}/><label>Score</label><br />
-                    Maximum:<input type="datetime-local" name="datemax" id="adatemax" value={this.state.adatemax} onChange={this.handleChange}/><label>Date </label>
-                            <input type="text" name="scoremax" id="ascoremax" size="2" value={this.state.ascoremax} onChange={this.handleChange}/><label>Score</label><br />
+                    Minimum:<input type="datetime-local" name="datemin" id="adatemin" value={this.state.datemin} onChange={this.handleChange}/><label>Date </label>
+                            <input type="text" name="scoremin" id="ascoremin" size="2" value={this.state.scoremin} onChange={this.handleChange}/><label>Score</label><br />
+                    Maximum:<input type="datetime-local" name="datemax" id="adatemax" value={this.state.datemax} onChange={this.handleChange}/><label>Date </label>
+                            <input type="text" name="scoremax" id="ascoremax" size="2" value={this.state.scoremax} onChange={this.handleChange}/><label>Score</label><br />
                     <textarea name="body" id="body" rows="1" value={this.state.body} onChange={this.handleChange}/>< br/>
                     <select name="table" id="table" value={this.state.table} onChange={this.handleChange}></select><label>Category</label><br />
                     <input type="submit" name="submit" id="submit" value="submit"></input>
