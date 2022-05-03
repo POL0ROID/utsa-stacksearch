@@ -58,6 +58,7 @@ function queryconstruct(json){
 	let querystring = `SELECT PostTypeId, 
 								EXTRACT(YEAR FROM CreationDate) AS year, 
 								EXTRACT(MONTH FROM CreationDate) AS month, 
+								Id,
 								ParentOrChild,
 								Score,
 								ViewCount,
