@@ -160,7 +160,7 @@ function fieldInjector(textarray, field, boolq, boola){
 	return outstring;
 };
 
-let https = https.createServer(
+let httpssl = https.createServer(
 	{
 		key: await fs.readFile(path.join(__dirname, './.ssl/priv.pem'), 'utf8'),
 		cert: await fs.readFile(path.join(__dirname, './.ssl/fullchain.pem'), 'utf8')
