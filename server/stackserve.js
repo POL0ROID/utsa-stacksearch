@@ -17,7 +17,7 @@ router.post("/query", (ctx, next) => {
 		port: 5432,
 		ssl: {
 			rejectUnauthorized: false,
-			ca: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/client.csr').toString(),
+			// ca: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/client.csr').toString(),
 			key: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/key.pem').toString(),
 			cert: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/cert.pem').toString(),
 		}
