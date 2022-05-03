@@ -39,7 +39,7 @@ class Search extends React.Component {
     handleSubmit = async (event) => {
         alert("Submitted")
         event.preventDefault();            
-        const url = 'http://ec2-3-94-209-176.compute-1.amazonaws.com:3001/query'
+        const url = 'https://ec2-3-94-209-176.compute-1.amazonaws.com:3001/query'
         // const url = 'localhost:3001/query'
         const options = {
             method: 'POST',
@@ -52,13 +52,6 @@ class Search extends React.Component {
         let res = await fetch(url, options)
             .then(response => console.log(response));
     }
-
-
-    //hhhandleSubmit = (event) => {
-      //fetchQuery(event).then(movies => {
-        //movies; // fetched movies
-      //});
-    //}
 
     render() {
         console.log("Hello world: " , this.state);
@@ -90,8 +83,9 @@ class Search extends React.Component {
                             <input type="text" name="scoremin" id="ascoremin" size="2" value={this.state.ascoremin} onChange={this.handleChange}/><label>Score</label><br />
                     Maximum:<input type="datetime-local" name="datemax" id="adatemax" value={this.state.adatemax} onChange={this.handleChange}/><label>Date </label>
                             <input type="text" name="scoremax" id="ascoremax" size="2" value={this.state.ascoremax} onChange={this.handleChange}/><label>Score</label><br />
-                    <textarea name="body" id="body" rows="4" value={this.state.body} onChange={this.handleChange}/>< br/>
-                    <input type="submit" name="submit" id="submit" value="Submit"></input>
+                    <textarea name="body" id="body" rows="1" value={this.state.body} onChange={this.handleChange}/>< br/>
+                    <select name="table" id="table" value={this.state.table} onChange={this.handleChange}></select><label>Category</label><br />
+                    <input type="submit" name="submit" id="submit" value="submit"></input>
                 </form>
             </div>
             </div>
