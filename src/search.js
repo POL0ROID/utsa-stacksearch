@@ -39,8 +39,8 @@ class Search extends React.Component {
     handleSubmit = async (event) => {
         alert("Submitted")
         event.preventDefault();            
-        const url = 'https://ec2-3-94-209-176.compute-1.amazonaws.com:8443/query'
-        // const url = 'localhost:8443/query'
+        const url = 'https://ec2-3-94-209-176.compute-1.amazonaws.com:3000/query'
+        // const url = 'localhost:3000/query'
         const options = {
             method: 'POST',
             headers: {
