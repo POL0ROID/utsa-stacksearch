@@ -42,7 +42,7 @@ class Search extends React.Component {
         const url = 'https://ec2-3-94-209-176.compute-1.amazonaws.com:3001/stackserve.js'
         // const url = 'localhost:3001/stackserve.js'
         const options = {
-            credentials: 'same-origin',
+            credentials: 'omit',
             method: 'POST',
             headers: {
                 'Accept': '*/*',
