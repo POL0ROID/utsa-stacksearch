@@ -61,7 +61,7 @@ router.post("/stackserve.js", async (ctx, next) => {
 		await JSON.stringify(r6)
 	];
 //	res7 = "{ " + JSON.stringify(result2) + " " + JSON.stringify(result3) + " " + JSON.stringify(result4) + " " + JSON.stringify(result5) + " " + JSON.stringify(result6) + " }";
-	console.table(res7);
+	console.log(res7);
 	//res = JSON.parse(res7);
 	app.use(async ctx => {
 			ctx.body = res7;
