@@ -20,7 +20,7 @@ router.post("/stackserve.js", (ctx, next) => {
 		host: 'stackpost.crymkd1bcdxk.us-east-1.rds.amazonaws.com',
 		database: 'stacks',
 		password: '0Mn0mn0m!',
-		port: 5432,
+		port: 5432//,
 		// sslmode: require,
 		// ssl: {
 		//	rejectUnauthorized: false,
@@ -44,7 +44,7 @@ router.post("/stackserve.js", (ctx, next) => {
 			app.use(async ctx => {
 				ctx.body = res;
 			});
-//		});
+		});
 //	});
 	const jstring = JSON.stringify(ctx.request.body);
 	console.log(jstring);
@@ -199,3 +199,4 @@ app.use( router.routes() );
 console.log("Server is listening.");
 app.listen(3001);
 //httpssl.listen(443, err => {if (err) console.log(err); });
+);
