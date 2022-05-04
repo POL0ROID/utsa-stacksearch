@@ -46,6 +46,8 @@ router.post("/stackserve.js", async (ctx, next) => {
 	});
 });
 
+router.get("/stackserve.js", ctx => {ctx.status=200});
+
 function queryconstruct(json){
 
 	const viewsmin = parseInt(json.viewsmin) || null;
