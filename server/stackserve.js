@@ -59,10 +59,9 @@ router.post("/stackserve.js", async (ctx, next) => {
 	console.log("r3: " + res8[0]);
 	console.log(JSON.parse(res8[0]));
 //	res7 = "{ " + JSON.stringify(result2) + " " + JSON.stringify(result3) + " " + JSON.stringify(result4) + " " + JSON.stringify(result5) + " " + JSON.stringify(result6) + " }";
-	console.log(JSON.parse(res8));
 	//res = JSON.parse(res7);
 	app.use(async ctx => {
-			ctx.body = res7;
+			ctx.body = res8;
 	});
 	pool.end();
 	next(ctx);
