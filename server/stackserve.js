@@ -36,6 +36,7 @@ router.post("/stackserve.js", async (ctx, next) => {
 	const jstring = JSON.stringify(ctx.request.body);
 	console.log(jstring);
 	const json = JSON.parse(jstring);
+	console.log(json);
 	const basequery = queryconstruct(json);
 	const qandaquery = "CREATE TEMP TABLE MyQuery2 AS SELECT PostTypeId, ParentOrChild, COUNT(*) FROM MyQuery GROUP BY PostTypeId, ParentOrChild;";
 	const totalquery = "SELECT PostTypeId, COUNT(*) FROM MyQuery2 GROUP BY PostTypeId;";
