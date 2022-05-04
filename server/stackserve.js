@@ -10,7 +10,6 @@ const app = new Koa();
 const router = new Router();
 
 router.post("/stackserve.js", (ctx, next) => {
-	console.log("Connected?");
 	const client = new Client({
 		user: 'Flamdini',
 		host: 'stackpost.crymkd1bcdxk.us-east-1.rds.amazonaws.com',
@@ -26,8 +25,8 @@ router.post("/stackserve.js", (ctx, next) => {
 		}
 	})
 	client.connect();
-	console.log("Connected.");
 	const jstring = JSON.stringify(ctx.request.body);
+	console.log(jstring);
 	const json = JSON.parse(jstring);
 	const basequery = queryconstruct(json);
 	const qandaquery = "SELECT PostTypeId, ParentOrChild, COUNT(*) INTO #MyQuery2 FROM #MyQuery GROUP BY PostTypeId, ParentOrChild;";
