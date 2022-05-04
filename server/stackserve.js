@@ -37,6 +37,7 @@ router.post("/stackserve.js", (ctx, next) => {
 	const datequery = "SELECT year, month, COUNT(*) FROM #MyQuery GROUP BY year, month;";
 	test = client.query("SELECT NOW();", (err, res) => {
 		console.log(err, res);
+		console.log("And THAT'S Games! :cooldude:");
 	})
 	result1 = client.query(basequery, (err, res) => {
 		console.log(err, res);
