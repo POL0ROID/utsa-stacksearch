@@ -51,7 +51,7 @@ router.post("/stackserve.js", async (ctx, next) => {
 		client.query(scorequery),
 		client.query(datequery)
 	]);
-	var res7 = `${JSON.stringify(r3)}${JSON.stringify(r4)}${JSON.stringify(r5)}${JSON.stringify(r6)}`.replace("}{", "}!@#$%^&*(){"));//.res7.split("!@#$%^&*()");
+	var res7 = `${JSON.stringify(r3)}${JSON.stringify(r4)}${JSON.stringify(r5)}${JSON.stringify(r6)}`.replace("}{", "}!@#$%^&*(){");//.res7.split("!@#$%^&*()");
 //	res7 = "{ " + JSON.stringify(result2) + " " + JSON.stringify(result3) + " " + JSON.stringify(result4) + " " + JSON.stringify(result5) + " " + JSON.stringify(result6) + " }";
 	//res = JSON.parse(res7);
 	app.use(async ctx => {
