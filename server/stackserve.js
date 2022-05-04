@@ -78,7 +78,7 @@ router.post("/stackserve.js", (ctx, next) => {
 	app.use(async ctx => {
 			ctx.body = res7;
 	});
-	await pool.end();
+	pool.end();
 	next(ctx);
 });
 
