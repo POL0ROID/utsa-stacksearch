@@ -26,8 +26,8 @@ router.post("/stackserve.js", (ctx, next) => {
 	})
 	client.connect();
 	const jstring = JSON.stringify(ctx.request.body);
+	console.log(jstring);
 	const json = JSON.parse(jstring);
-	console.log(json);
 	const basequery = queryconstruct(json);
 	const qandaquery = "SELECT PostTypeId, ParentOrChild, COUNT(*) INTO #MyQuery2 FROM #MyQuery GROUP BY PostTypeId, ParentOrChild;";
 	const totalquery = "SELECT PostTypeId, COUNT(*) FROM #MyQuery2 GROUP BY PostTypeId;";
