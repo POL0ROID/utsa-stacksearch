@@ -50,7 +50,7 @@ router.post("/stackserve.js", (ctx, next) => {
 	console.log(jstring);
 	const json = JSON.parse(jstring);
 	const basequery = queryconstruct(json);
-	const qandaquery = "CREATE TEMP TABLE MyQuery2( SELECT PostTypeId, ParentOrChild, COUNT(*) FROM MyQuery GROUP BY PostTypeId, ParentOrChild;";
+	const qandaquery = "CREATE TEMP TABLE MyQuery2 AS SELECT PostTypeId, ParentOrChild, COUNT(*) FROM MyQuery GROUP BY PostTypeId, ParentOrChild;";
 	const totalquery = "SELECT PostTypeId, COUNT(*) FROM MyQuery2 GROUP BY PostTypeId;";
 	const viewquery = "SELECT ViewCount, COUNT(*) FROM MyQuery GROUP BY ViewCount;";
 	const scorequery = "SELECT Score, COUNT(*) FROM MyQuery GROUP BY Score;";
@@ -99,7 +99,7 @@ function queryconstruct(json){
 	const qstring = checkInjector(json.includequestion, json.includesatisfied, json.includeunsatisfied, 1);
 	const astring = checkInjector(json.includeanswer, json.includeaccepted, json.includeother, 2);
 
-	let querystring = `CREATE TEMP TABLE MyQuery(
+	let querystring = `CREATE TEMP TABLE MyQuery AS
 						SELECT PostTypeId, 
 								EXTRACT(YEAR FROM CreationDate) AS year, 
 								EXTRACT(MONTH FROM CreationDate) AS month, 
