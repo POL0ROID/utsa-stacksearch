@@ -168,6 +168,7 @@ let httpssl = https.createServer(
 	app.callback()
 );
 
+app.use( parser() );
 app.use( cors() );
 app.use( router.routes() );
 console.log("Server is listening.");
