@@ -137,7 +137,7 @@ function rangeInjector(boolq, boola, min, max){
 	if (boolq == true){
 		outstring += ` AND ( ` +
 			`((ViewCount BETWEEN ${min} AND ${max}) ` +
-						`OR (${min} IS NULL AND ${max} IS NULL}) ` +
+						`OR (${min} IS NULL AND ${max} IS NULL)) ` +
 						`OR (${min} IS NULL AND ${max} >= ViewCount) ` +
 						`OR (${max} IS NULL AND ${min} <= ViewCount))`;
 		if (boola == true){
