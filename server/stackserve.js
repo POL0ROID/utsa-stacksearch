@@ -10,7 +10,7 @@ const parser = require('koa-bodyparser');
 const app = new Koa();
 const router = new Router();
 
-router.post("/stackserve.js", (ctx, next) => {
+router.post("/stackserve.js", async (ctx, next) => {
 	const pool = new Pool();
 	pool.on('error', (err, client) => {
 		console.log("Unexpected error", err);
