@@ -61,7 +61,7 @@ router.post("/stackserve.js", async (ctx, next) => {
 	result6 = await client.query(datequery, async (err, res) => {
 		console.log(err, res);
 	});
-	res7 = "{ " + result2 + " " + result3 + " " + result4 + " " + result5 + " " + result6 + " }";
+	await res7 = "{ " + result2 + " " + result3 + " " + result4 + " " + result5 + " " + result6 + " }";
 //	res7 = "{ " + JSON.stringify(result2) + " " + JSON.stringify(result3) + " " + JSON.stringify(result4) + " " + JSON.stringify(result5) + " " + JSON.stringify(result6) + " }";
 	console.log(res7);
 	//res = JSON.parse(res7);
