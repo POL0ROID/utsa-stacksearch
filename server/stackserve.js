@@ -55,7 +55,7 @@ router.post("/stackserve.js", async (ctx, next) => {
 	]);
 	console.log(r3);
 	var res7 = `${JSON.stringify(r3)}${JSON.stringify(r4)}${JSON.stringify(r5)}${JSON.stringify(r6)}`
-	var res8 = res7.split('}', StringSplitOptions.RemoveEmptyEntries)
+	var res8 = res7.split('}')
 				.select(x =>  x + "}")
 				.tolist();
 	console.log("r3: " + res7[0]);
