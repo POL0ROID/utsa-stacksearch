@@ -45,13 +45,13 @@ router.post("/stackserve.js", async (ctx, next) => {
 	const scorequery = "SELECT Score, COUNT(*) FROM MyQuery GROUP BY Score;";
 	const datequery = "SELECT year, month, COUNT(*) FROM MyQuery GROUP BY year, month;";
 	const [r1, r2, r3, r4, r5, r6] = await Promise.all([
-		client.query(basetable),
-		client.query(qandatable),
-		client.query(qandaquery),
-		client.query(totalquery),
-		client.query(viewquery),
-		client.query(scorequery),
-		client.query(datequery)
+		JSON.stringify(client.query(basetable)),
+		JSON.stringify(client.query(qandatable)),
+		JSON.stringify(client.query(qandaquery)),
+		JSON.stringify(client.query(totalquery)),
+		JSON.stringify(client.query(viewquery)),
+		JSON.stringify(client.query(scorequery)),
+		JSON.stringify(client.query(datequery))
 	]);
 	console.log(r3);
 	res7 = `${r3}, ${r4}, ${r5}, ${r6}`
