@@ -44,14 +44,16 @@ router.post("/stackserve.js", async (ctx, next) => {
 	const viewquery = "SELECT ViewCount, COUNT(*) FROM MyQuery GROUP BY ViewCount;";
 	const scorequery = "SELECT Score, COUNT(*) FROM MyQuery GROUP BY Score;";
 	const datequery = "SELECT year, month, COUNT(*) FROM MyQuery GROUP BY year, month;";
-	result1 = client.query(basetable);
-	result2 = client.query(qandatable);
-	result2 = client.query(qandaquery);
-	result3 = client.query(totalquery);
-	result4 = client.query(viewquery);
-	result5 = client.query(scorequery);
-	result6 = client.query(datequery);
-	res7 = "{ " + await result3 + " " + await result4 + " " + await result5 + " " + await result6 + " }";
+	const [r1, r2, r3, r4, r5, r6] = await Promise.all([
+		client.query(basetable),
+		client.query(qandatable),
+		client.query(qandaquery),
+		client.query(totalquery),
+		client.query(viewquery),
+		client.query(scorequery),
+		client.query(datequery)
+	]);
+	res7 = "{ " + result3 + " " + result4 + " " + result5 + " " + result6 + " }";
 //	res7 = "{ " + JSON.stringify(result2) + " " + JSON.stringify(result3) + " " + JSON.stringify(result4) + " " + JSON.stringify(result5) + " " + JSON.stringify(result6) + " }";
 	console.log(res7);
 	//res = JSON.parse(res7);
