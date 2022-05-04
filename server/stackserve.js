@@ -37,28 +37,28 @@ router.post("/stackserve.js", async (ctx, next) => {
 	console.log(jstring);
 	const json = JSON.parse(jstring);
 	console.log(json);
-	const basequery = await queryconstruct(json);
+	const basequery = queryconstruct(json);
 	const qandaquery = "CREATE TEMP TABLE MyQuery2 AS SELECT PostTypeId, ParentOrChild, COUNT(*) FROM MyQuery GROUP BY PostTypeId, ParentOrChild;";
 	const totalquery = "SELECT PostTypeId, COUNT(*) FROM MyQuery2 GROUP BY PostTypeId;";
 	const viewquery = "SELECT ViewCount, COUNT(*) FROM MyQuery GROUP BY ViewCount;";
 	const scorequery = "SELECT Score, COUNT(*) FROM MyQuery GROUP BY Score;";
 	const datequery = "SELECT year, month, COUNT(*) FROM MyQuery GROUP BY year, month;";
-	result1 = await client.query(basequery, async (err, res) => {
+	result1 = client.query(basequery, async (err, res) => {
 		console.log(err, res);
 	});
-	result2 = await client.query(qandaquery, async (err, res) => {
+	result2 = client.query(qandaquery, async (err, res) => {
 		console.log(err, res);
 	});
-	result3 = await client.query(totalquery, async (err, res) => {
+	result3 = client.query(totalquery, async (err, res) => {
 		console.log(err, res);
 	});
-	result4 = await client.query(viewquery, async (err, res) => {
+	result4 = client.query(viewquery, async (err, res) => {
 		console.log(err, res);
 	});
-	result5 = await client.query(scorequery, async (err, res) => {
+	result5 = client.query(scorequery, async (err, res) => {
 		console.log(err, res);
 	});
-	result6 = await client.query(datequery, async (err, res) => {
+	result6 = client.query(datequery, async (err, res) => {
 		console.log(err, res);
 	});
 	res7 = "{ " + await result2 + " " + await result3 + " " + await result4 + " " + await result5 + " " + await result6 + " }";
