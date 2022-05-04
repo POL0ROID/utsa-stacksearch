@@ -87,28 +87,28 @@ function queryconstruct(json){
 	const qstring = checkInjector(json.includequestion, json.includesatisfied, json.includeunsatisfied, 1);
 	const astring = checkInjector(json.includeanswer, json.includeaccepted, json.includeother, 2);
 
-	let querystring = `CREATE TEMP TABLE MyQuery AS
-						SELECT PostTypeId, 
-								EXTRACT(YEAR FROM CreationDate) AS year, 
-								EXTRACT(MONTH FROM CreationDate) AS month, 
-								Id,
-								ParentOrChild,
-								Score,
-								ViewCount
-						FROM ${json.table} 
-						WHERE (${qstring} OR ${astring}) 
-							AND ((CreationDate BETWEEN ${datemin} AND ${datemax}) 
-												OR (${datemin} IS NULL AND ${datemax} IS NULL) 
-												OR (${datemin} IS NULL AND ${datemax} >= CreationDate) 
-												OR (${datemax} IS NULL AND ${datemin} <= CreationDate)) 
-							AND ((Score BETWEEN ${scoremin} AND ${scoremax}) 
-										OR (${scoremin} IS NULL AND ${scoremax} IS NULL) 
-										OR (${scoremin} IS NULL AND ${scoremax} >= Score) 
-										OR (${scoremax} IS NULL AND ${scoremin} <= Score)) 
-							${titlestring}
-							${bodystring}
-							${tagstring}
-							${viewstring};`;
+	let querystring = `CREATE TEMP TABLE MyQuery AS ` + 
+						`SELECT PostTypeId, ` +
+								`EXTRACT(YEAR FROM CreationDate) AS year, ` +
+								`EXTRACT(MONTH FROM CreationDate) AS month, ` +
+								`Id, ` +
+								`ParentOrChild, ` +
+								`Score, ` +
+								`ViewCount ` +
+						`FROM ${json.table} ` +
+						`WHERE (${qstring} OR ${astring}) ` +
+							`AND ((CreationDate BETWEEN ${datemin} AND ${datemax}) ` +
+												`OR (${datemin} IS NULL AND ${datemax} IS NULL) ` +
+												`OR (${datemin} IS NULL AND ${datemax} >= CreationDate) ` +
+												`OR (${datemax} IS NULL AND ${datemin} <= CreationDate)) ` +
+							`AND ((Score BETWEEN ${scoremin} AND ${scoremax}) ` +
+										`OR (${scoremin} IS NULL AND ${scoremax} IS NULL) ` +
+										`OR (${scoremin} IS NULL AND ${scoremax} >= Score) ` +
+										`OR (${scoremax} IS NULL AND ${scoremin} <= Score))` +
+							`${titlestring}` +
+							`${bodystring}` +
+							`${tagstring}` +
+							`${viewstring};`;
 	console.log(querystring);
 	return querystring;
 }
@@ -135,13 +135,13 @@ function checkInjector(bool1, bool2, bool3, type){
 function rangeInjector(boolq, boola, min, max){
 	let outstring = "";
 	if (boolq == true){
-		outstring += `AND ( 
-			((ViewCount BETWEEN ${min} AND ${max}) 
-						OR (${min} IS NULL AND ${max} IS NULL}) 
-						OR (${min} IS NULL AND ${max} >= ViewCount) 
-						OR (${max} IS NULL AND ${min} <= ViewCount))`;
+		outstring += ` AND ( ` +
+			`((ViewCount BETWEEN ${min} AND ${max}) ` +
+						`OR (${min} IS NULL AND ${max} IS NULL}) ` +
+						`OR (${min} IS NULL AND ${max} >= ViewCount) ` +
+						`OR (${max} IS NULL AND ${min} <= ViewCount))`;
 		if (boola == true){
-			outstring += "OR (ViewCount IS NULL)";
+			outstring += " OR (ViewCount IS NULL)";
 		}
 	}
 	return outstring;
@@ -153,7 +153,7 @@ function fieldInjector(textarray, field, boolq, boola){
 		outstring = ""
 	}
 	else{
-		outstring = "AND ("
+		outstring = " AND ("
 		for(let i = 0; i < textarray.length; i++){
 			if(field == "Tags"){
 				outstring += `(${field} LIKE '%<${textarray[i]}>%')`;
