@@ -22,7 +22,6 @@ router.post("/stackserve.js", async (ctx, next) => {
 		password: '0Mn0mn0m!',
 		port: 5432,
 		sslmode: require
-		};
 	});
 	client.connect();
 //	pool.connect((err, client, done) => {
