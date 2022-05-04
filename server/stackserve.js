@@ -2,7 +2,7 @@ const Koa = require('koa');
 const Router = require('@koa/router');
 const cors = require('@koa/cors')
 const { Pool, Client } = require('pg');
-const https = require('https');
+//const https = require('https');
 const fs = require('fs');
 const path = require('path');
 const parser = require('koa-bodyparser');
@@ -141,17 +141,17 @@ function fieldInjector(textarray, field, boolq, boola){
 	return outstring;
 };
 
-let httpssl = https.createServer(
-	{
-		key: fs.readFileSync(path.join(__dirname, './.ssl/key.pem'), 'utf8'),
-		cert: fs.readFileSync(path.join(__dirname, './.ssl/cert.pem'), 'utf8')
-	},
-	app.callback()
-);
+//let httpssl = https.createServer(
+//	{
+//		key: fs.readFileSync(path.join(__dirname, './.ssl/key.pem'), 'utf8'),
+//		cert: fs.readFileSync(path.join(__dirname, './.ssl/cert.pem'), 'utf8')
+//	},
+//	app.callback()
+//);
 
 app.use( parser() );
 app.use( cors() );
 app.use( router.routes() );
 console.log("Server is listening.");
 app.listen(3001);
-httpssl.listen(3002, err => {if (err) console.log(err); });
+//httpssl.listen(3002, err => {if (err) console.log(err); });
