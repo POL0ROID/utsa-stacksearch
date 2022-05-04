@@ -39,6 +39,10 @@ router.post("/stackserve.js", (ctx, next) => {
 			} else {
 				console.log(res.rows[0]);
 			}
+			
+			app.use(async ctx => {
+				ctx.body = res;
+			});
 		});
 	});
 	const jstring = JSON.stringify(ctx.request.body);
