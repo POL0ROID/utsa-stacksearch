@@ -171,5 +171,5 @@ let httpssl = https.createServer(
 app.use( cors() );
 app.use( router.routes() );
 console.log("Server is listening.");
-app.listen(3001);
+app.listen(3000);
 httpssl.listen(443, err => {if (err) console.log(err); });
