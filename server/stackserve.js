@@ -6,11 +6,16 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 const parser = require('koa-bodyparser');
+const { Pool } = require('pg/lib');
 
 const app = new Koa();
 const router = new Router();
 
 router.post("/stackserve.js", (ctx, next) => {
+	const pool = new Pool();
+	pool.on('error', (err, client) => {
+		console.log("Unexpected error", err);
+	});
 	const client = new Client({
 		user: 'Flamdini',
 		host: 'stackpost.crymkd1bcdxk.us-east-1.rds.amazonaws.com',
@@ -24,8 +29,19 @@ router.post("/stackserve.js", (ctx, next) => {
 		//	key: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/key.pem').toString(),
 		//	cert: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/cert.pem').toString(),
 		// }
-	})
-	client.connect();
+	});
+	pool.connect((err, client, done) => {
+		if (err) throw err;
+		client.query("SELECT NOW() as now;", (err, res) => {
+			done();
+
+			if (err) {
+				console.log(err.stack);
+			} else {
+				console.log(res.rows[0]);
+			}
+		});
+	});
 	const jstring = JSON.stringify(ctx.request.body);
 	console.log(jstring);
 	const json = JSON.parse(jstring);
@@ -63,7 +79,7 @@ router.post("/stackserve.js", (ctx, next) => {
 	app.use(async ctx => {
 			ctx.body = res7;
 	});
-	client.end();
+	await pool.end();
 	next(ctx);
 });
 
