@@ -87,7 +87,7 @@ class Search extends React.Component {
                             <input type="text" name="scoremax" id="ascoremax" size="2" value={this.state.scoremax} onChange={this.handleChange}/><label>Score</label><br />
                     <textarea name="body" id="body" rows="1" value={this.state.body} onChange={this.handleChange}/>< br/>
                     <select name="table" id="table" value={this.state.table} onChange={this.handleChange}></select><label>Category</label><br />
-                    <input type="submit" name="submit" id="submit" value="submit"></input>
+                    <input type="submit" name="submit" id="submit" value="Submit"></input>
                 </form>
             </div>
             </div>
