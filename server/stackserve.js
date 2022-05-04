@@ -34,9 +34,7 @@ router.post("/stackserve.js", async (ctx, next) => {
 //		if (err) throw err;
 //	});
 	const jstring = JSON.stringify(ctx.request.body);
-	console.log(jstring);
 	const json = JSON.parse(jstring);
-	console.log(json);
 	const basetable= queryconstruct(json);
 	const qandatable = "CREATE TEMP TABLE MyQuery2 AS SELECT PostTypeId, ParentOrChild, COUNT(*) FROM MyQuery GROUP BY PostTypeId, ParentOrChild;";
 	const qandaquery = `SELECT * FROM MyQuery2;`
@@ -53,15 +51,11 @@ router.post("/stackserve.js", async (ctx, next) => {
 		client.query(scorequery),
 		client.query(datequery)
 	]);
-	console.log(r3);
-	var res7 = `${JSON.stringify(r3)}${JSON.stringify(r4)}${JSON.stringify(r5)}${JSON.stringify(r6)}`.replace("}{", "}!@#$%^&*(){")
-	var res8 = res7.split("!@#$%^&*()");
-	console.log("r3: " + res8[0]);
-	console.log(JSON.parse(res8[0]));
+	var res7 = `${JSON.stringify(r3)}${JSON.stringify(r4)}${JSON.stringify(r5)}${JSON.stringify(r6)}`.replace("}{", "}!@#$%^&*(){"));//.res7.split("!@#$%^&*()");
 //	res7 = "{ " + JSON.stringify(result2) + " " + JSON.stringify(result3) + " " + JSON.stringify(result4) + " " + JSON.stringify(result5) + " " + JSON.stringify(result6) + " }";
 	//res = JSON.parse(res7);
 	app.use(async ctx => {
-			ctx.body = res8;
+			ctx.body = res7;
 	});
 	pool.end();
 	next(ctx);
