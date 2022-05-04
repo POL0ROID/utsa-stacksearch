@@ -53,7 +53,7 @@ router.post("/stackserve.js", async (ctx, next) => {
 		client.query(scorequery),
 		client.query(datequery)
 	]);
-	res7 = "{ " + result3 + " " + result4 + " " + result5 + " " + result6 + " }";
+	res7 = "{ " + r3 + " " + r4 + " " + r5 + " " + r6 + " }";
 //	res7 = "{ " + JSON.stringify(result2) + " " + JSON.stringify(result3) + " " + JSON.stringify(result4) + " " + JSON.stringify(result5) + " " + JSON.stringify(result6) + " }";
 	console.log(res7);
 	//res = JSON.parse(res7);
