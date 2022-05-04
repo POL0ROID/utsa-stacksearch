@@ -1,7 +1,7 @@
 const Koa = require('koa');
 const Router = require('@koa/router');
 const cors = require('@koa/cors')
-const { Pool, Client } = require('pg')
+const { Pool, Client } = require('pg').native;
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
