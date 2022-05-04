@@ -29,8 +29,9 @@ router.post("/stackserve.js", (ctx, next) => {
 		//	cert: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/cert.pem').toString(),
 		// }
 	});
-	pool.connect((err, client, done) => {
-		if (err) throw err;
+	client.connect();
+//	pool.connect((err, client, done) => {
+//		if (err) throw err;
 		client.query("SELECT NOW() as now;", (err, res) => {
 			done();
 
@@ -43,8 +44,8 @@ router.post("/stackserve.js", (ctx, next) => {
 			app.use(async ctx => {
 				ctx.body = res;
 			});
-		});
-	});
+//		});
+//	});
 	const jstring = JSON.stringify(ctx.request.body);
 	console.log(jstring);
 	const json = JSON.parse(jstring);
