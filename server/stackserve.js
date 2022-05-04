@@ -21,12 +21,7 @@ router.post("/stackserve.js", async (ctx, next) => {
 		database: 'stacks',
 		password: '0Mn0mn0m!',
 		port: 5432,
-		sslmode: require,
-		ssl: {
-		rejectUnauthorized: false,
-		cert: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/global-bundle.pem').toString(),
-		key: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/key.pem').toString(),
-		//cert: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/cert.pem').toString(),
+		sslmode: require
 		}
 	});
 	client.connect();
