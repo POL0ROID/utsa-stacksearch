@@ -33,7 +33,7 @@ router.post("/stackserve.js", (ctx, next) => {
 //	pool.connect((err, client, done) => {
 //		if (err) throw err;
 		client.query("SELECT NOW() as now;", (err, res) => {
-			done();
+//			done();
 
 			if (err) {
 				console.log(err.stack);
