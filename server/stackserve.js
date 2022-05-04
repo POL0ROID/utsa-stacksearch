@@ -29,6 +29,7 @@ router.post("/stackserve.js", async (ctx, next) => {
 	const viewquery = "SELECT ViewCount, COUNT(*) FROM MyQuery GROUP BY ViewCount;";
 	const scorequery = "SELECT Score, COUNT(*) FROM MyQuery GROUP BY Score;";
 	const datequery = "SELECT year, month, COUNT(*) FROM MyQuery GROUP BY year, month;";
+	console.log("Timed out?");
 	const [r1, r2, r3, r4, r5, r6] = await Promise.all([
 		client.query(basetable),
 		client.query(qandatable),
@@ -38,6 +39,8 @@ router.post("/stackserve.js", async (ctx, next) => {
 		client.query(scorequery),
 		client.query(datequery)
 	]);
+	console.log("Timed out?");
+	console.log(r3, r4, r5, r6);
 	app.use(async ctx => {
 			ctx.body = [r3, r4, r5, r6];
 	});
