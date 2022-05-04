@@ -25,6 +25,7 @@ router.post("/stackserve.js", (ctx, next) => {
 		}
 	})
 	client.connect();
+	console.log(ctx.request.body);
 	const jstring = JSON.stringify(ctx.request.body);
 	console.log(jstring);
 	const json = JSON.parse(jstring);
