@@ -109,6 +109,7 @@ function queryconstruct(json){
 							${bodystring}
 							${tagstring}
 							${viewstring};`;
+	console.log(querystring);
 	return querystring;
 }
 
