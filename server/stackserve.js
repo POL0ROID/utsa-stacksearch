@@ -10,7 +10,7 @@ const parser = require('koa-bodyparser');
 const app = new Koa();
 const router = new Router();
 
-router.post("/stackserve.js", (ctx, next) => {
+router.post("/stackserve.js", async (ctx, next) => {
 	const pool = new Pool();
 	pool.on('error', (err, client) => {
 		console.log("Unexpected error", err);
@@ -32,19 +32,6 @@ router.post("/stackserve.js", (ctx, next) => {
 	client.connect();
 //	pool.connect((err, client, done) => {
 //		if (err) throw err;
-		client.query("SELECT NOW() as now;", (err, res) => {
-//			done();
-
-			if (err) {
-				console.log(err.stack);
-			} else {
-				console.log(res.rows[0]);
-			}
-			
-			app.use(async ctx => {
-				ctx.body = res;
-			});
-		});
 //	});
 	const jstring = JSON.stringify(ctx.request.body);
 	console.log(jstring);
@@ -55,25 +42,7 @@ router.post("/stackserve.js", (ctx, next) => {
 	const viewquery = "SELECT ViewCount, COUNT(*) FROM MyQuery GROUP BY ViewCount;";
 	const scorequery = "SELECT Score, COUNT(*) FROM MyQuery GROUP BY Score;";
 	const datequery = "SELECT year, month, COUNT(*) FROM MyQuery GROUP BY year, month;";
-	result1 = client.query(basequery, (err, res) => {
-		console.log(err, res);
-	});
-	result2 = client.query(qandaquery, (err, res) => {
-		console.log(err, res);
-	});
-	result3 = client.query(totalquery, (err, res) => {
-		console.log(err, res);
-	});
-	result4 = client.query(viewquery, (err, res) => {
-		console.log(err, res);
-	});
-	result5 = client.query(scorequery, (err, res) => {
-		console.log(err, res);
-	});
-	result6 = client.query(datequery, (err, res) => {
-		console.log(err, res);
-	});
-	res7 = "{ " + JSON.stringify(result2) + " " + JSON.stringify(result3) + " " + JSON.stringify(result4) + " " + JSON.stringify(result5) + " " + JSON.stringify(result6) + " }";
+	//res7 = "{ " + JSON.stringify(result2) + " " + JSON.stringify(result3) + " " + JSON.stringify(result4) + " " + JSON.stringify(result5) + " " + JSON.stringify(result6) + " }";
 	console.log(res7);
 	//res = JSON.parse(res7);
 	app.use(async ctx => {
