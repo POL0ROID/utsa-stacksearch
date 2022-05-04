@@ -55,10 +55,10 @@ router.post("/stackserve.js", async (ctx, next) => {
 	]);
 	console.log(r3);
 	res7 = [
-		await JSON.stringify(r3) + 
-		await JSON.stringify(r4) + 
-		await JSON.stringify(r5) + 
-		await JSON.stringify(r6)
+		await r3 + 
+		await r4 + 
+		await r5 + 
+		await r6
 	];
 //	res7 = "{ " + JSON.stringify(result2) + " " + JSON.stringify(result3) + " " + JSON.stringify(result4) + " " + JSON.stringify(result5) + " " + JSON.stringify(result6) + " }";
 	console.log(res7);
