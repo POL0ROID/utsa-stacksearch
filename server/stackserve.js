@@ -41,7 +41,6 @@ router.post("/stackserve.js", async (ctx, next) => {
 	app.use(async ctx => {
 			ctx.body = [r3, r4, r5, r6];
 	});
-	next(ctx);
 });
 
 function queryconstruct(json){
