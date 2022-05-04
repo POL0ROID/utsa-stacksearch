@@ -50,15 +50,11 @@ router.post("/stackserve.js", (ctx, next) => {
 	console.log(jstring);
 	const json = JSON.parse(jstring);
 	const basequery = queryconstruct(json);
-	const qandaquery = "SELECT PostTypeId, ParentOrChild, COUNT(*) INTO #MyQuery2 FROM #MyQuery GROUP BY PostTypeId, ParentOrChild;";
-	const totalquery = "SELECT PostTypeId, COUNT(*) FROM #MyQuery2 GROUP BY PostTypeId;";
-	const viewquery = "SELECT ViewCount, COUNT(*) FROM #MyQuery GROUP BY ViewCount;";
-	const scorequery = "SELECT Score, COUNT(*) FROM #MyQuery GROUP BY Score;";
-	const datequery = "SELECT year, month, COUNT(*) FROM #MyQuery GROUP BY year, month;";
-	test = client.query("SELECT NOW() as now;", (err, res) => {
-		console.log(err, res);
-		console.log("And THAT'S Games! :cooldude:");
-	})
+	const qandaquery = "CREATE TEMP TABLE MyQuery2( SELECT PostTypeId, ParentOrChild, COUNT(*) FROM MyQuery GROUP BY PostTypeId, ParentOrChild;";
+	const totalquery = "SELECT PostTypeId, COUNT(*) FROM MyQuery2 GROUP BY PostTypeId;";
+	const viewquery = "SELECT ViewCount, COUNT(*) FROM MyQuery GROUP BY ViewCount;";
+	const scorequery = "SELECT Score, COUNT(*) FROM MyQuery GROUP BY Score;";
+	const datequery = "SELECT year, month, COUNT(*) FROM MyQuery GROUP BY year, month;";
 	result1 = client.query(basequery, (err, res) => {
 		console.log(err, res);
 	});
@@ -103,14 +99,14 @@ function queryconstruct(json){
 	const qstring = checkInjector(json.includequestion, json.includesatisfied, json.includeunsatisfied, 1);
 	const astring = checkInjector(json.includeanswer, json.includeaccepted, json.includeother, 2);
 
-	let querystring = `SELECT PostTypeId, 
+	let querystring = `CREATE TEMP TABLE MyQuery(
+						SELECT PostTypeId, 
 								EXTRACT(YEAR FROM CreationDate) AS year, 
 								EXTRACT(MONTH FROM CreationDate) AS month, 
 								Id,
 								ParentOrChild,
 								Score,
-								ViewCount,
-						INTO #MyQuery 
+								ViewCount
 						FROM ${json.table} 
 						WHERE (${qstring} OR ${astring}) 
 							AND ((CreationDate BETWEEN ${datemin} AND ${datemax}) 
