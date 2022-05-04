@@ -11,10 +11,6 @@ const app = new Koa();
 const router = new Router();
 
 router.post("/stackserve.js", async (ctx, next) => {
-	const pool = new Pool();
-	pool.on('error', (err, client) => {
-		console.log("Unexpected error", err);
-	});
 	const client = new Client({
 		user: 'Flamdini',
 		host: 'stackpost.crymkd1bcdxk.us-east-1.rds.amazonaws.com',
@@ -24,9 +20,6 @@ router.post("/stackserve.js", async (ctx, next) => {
 		sslmode: require
 	});
 	client.connect();
-//	pool.connect((err, client, done) => {
-//		if (err) throw err;
-//	});
 	const jstring = JSON.stringify(ctx.request.body);
 	const json = JSON.parse(jstring);
 	const basetable= queryconstruct(json);
@@ -45,11 +38,9 @@ router.post("/stackserve.js", async (ctx, next) => {
 		client.query(scorequery),
 		client.query(datequery)
 	]);
-	var res = `${JSON.stringify(r3)}${JSON.stringify(r4)}${JSON.stringify(r5)}${JSON.stringify(r6)}`.replace("}{", "}!@#$%^&*(){");//.split("!@#$%^&*()");
 	app.use(async ctx => {
 			ctx.body = [r3, r4, r5, r6];
 	});
-	pool.end();
 	next(ctx);
 });
 
@@ -164,4 +155,4 @@ app.use( cors() );
 app.use( router.routes() );
 console.log("Server is listening.");
 app.listen(3001);
-//httpssl.listen(443, err => {if (err) console.log(err); });
+httpssl.listen(3002, err => {if (err) console.log(err); });
