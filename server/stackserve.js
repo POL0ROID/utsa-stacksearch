@@ -20,14 +20,14 @@ router.post("/stackserve.js", async (ctx, next) => {
 		host: 'stackpost.crymkd1bcdxk.us-east-1.rds.amazonaws.com',
 		database: 'stacks',
 		password: '0Mn0mn0m!',
-		port: 5432//,
-		// sslmode: require,
-		// ssl: {
-		//	rejectUnauthorized: false,
-		//	ca: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/global-bundle.pem').toString(),
-		//	key: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/key.pem').toString(),
-		//	cert: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/cert.pem').toString(),
-		// }
+		port: 5432,
+		sslmode: require,
+		ssl: {
+		rejectUnauthorized: false,
+		ca: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/global-bundle.pem').toString(),
+		key: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/key.pem').toString(),
+		cert: fs.readFileSync('/home/ec2-user/utsa-stacksearch/server/cert.pem').toString(),
+		}
 	});
 	client.connect();
 //	pool.connect((err, client, done) => {
