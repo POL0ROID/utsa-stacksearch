@@ -9,7 +9,7 @@ const parser = require('koa-bodyparser');
 const serve = require('koa-static');
 const app = new Koa();
 const router = new Router();
-app.use(serve(path.join('~/utsa-stacksearch/server')));
+//app.use(serve(path.join('~/utsa-stacksearch/server')));
 
 router.post("/stackserve.js", async (ctx, next) => {
 	const client = new Client({
@@ -163,5 +163,6 @@ app.use( parser() );
 app.use( cors() );
 app.use( router.routes() );
 console.log("Server is listening.");
-app.listen(443);
+app.listen(3002);
+//app.listen(443);
 //httpssl.listen(3002, err => {if (err) console.log(err); });
