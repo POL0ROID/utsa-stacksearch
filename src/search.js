@@ -35,7 +35,7 @@ class Search extends React.Component {
     handleSubmit = async (event) => {
         alert("Submitted")
         event.preventDefault();            
-        const url = 'https://zcxlabs.redtype.consulting/stackserve.js'
+        const url = 'https://zcxlabs.redtype.consulting/stackserve:3002.js'
         // const url = 'http://ec2-3-94-209-176.compute-1.amazonaws.com:3001/stackserve.js'
         // const url = 'localhost:3001/stackserve.js'
         const options = {
