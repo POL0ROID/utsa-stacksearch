@@ -20,7 +20,7 @@ class Search extends React.Component {
             title: "",
             body: "",
             tags: "", 
-            table: "stackoverflow"
+            table: "writers"
         }
     }
 
