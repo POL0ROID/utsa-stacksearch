@@ -43,7 +43,7 @@ router.post("/stackserve.js", async (ctx, next) => {
 	console.log("Timed out?");
 	console.log(r3, r4, r5, r6);
 	app.use(async ctx => {
-			res.header('Access-Control-Allow-Origin': '*');
+			res.header('Access-Control-Allow-Origin', '*');
 			ctx.body = [r3, r4, r5, r6];
 	});
 });
