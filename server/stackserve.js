@@ -9,7 +9,7 @@ const parser = require('koa-bodyparser');
 const serve = require('koa-static');
 const app = new Koa();
 const router = new Router();
-app.use(serve(path.join('~/utsa-stacksearch/public')));
+app.use(serve(path.join('~/utsa-stacksearch/server')));
 
 router.post("/stackserve.js", async (ctx, next) => {
 	const client = new Client({
@@ -47,7 +47,11 @@ router.post("/stackserve.js", async (ctx, next) => {
 	});
 });
 
-router.get("/stackserve.js", ctx => {ctx.status=200});
+router.get("/stackserve.js", ctx => {
+	console.log("GET received.");
+	ctx.status=200;
+	app.use(ctx);
+});
 
 function queryconstruct(json){
 
