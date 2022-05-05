@@ -86,7 +86,7 @@ class Search extends React.Component {
                     Maximum:<input type="datetime-local" name="datemax" id="adatemax" value={this.state.datemax} onChange={this.handleChange}/><label>Date </label>
                             <input type="text" name="scoremax" id="ascoremax" size="2" value={this.state.scoremax} onChange={this.handleChange}/><label>Score</label><br />
                     <textarea name="body" id="body" rows="1" value={this.state.body} onChange={this.handleChange}/><label>Body</label>< br/>
-                    <select name="table" id="table" value={this.state.table} onChange={this.handleChange}><option value="stackoverflow"></select><label>Category</label><br />
+                    <select name="table" id="table" value={this.state.table} onChange={this.handleChange}><option value="stackoverflow"/><option value="writing"/></select><label>Category</label><br />
                     <input type="submit" name="submit" id="submit" value="Submit"></input><
                 </form>
             </div>
