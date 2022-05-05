@@ -6,9 +6,10 @@ const { Pool, Client } = require('pg');
 const fs = require('fs');
 const path = require('path');
 const parser = require('koa-bodyparser');
-
+const serve = ('koa-static');
 const app = new Koa();
 const router = new Router();
+app.use(serve('/', opts));
 
 router.post("/stackserve.js", async (ctx, next) => {
 	const client = new Client({
@@ -158,5 +159,5 @@ app.use( parser() );
 app.use( cors() );
 app.use( router.routes() );
 console.log("Server is listening.");
-app.listen(3002);
+app.listen(443);
 //httpssl.listen(3002, err => {if (err) console.log(err); });
