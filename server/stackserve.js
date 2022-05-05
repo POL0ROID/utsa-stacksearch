@@ -12,7 +12,7 @@ const app = new Koa();
 const router = new Router();
 const front = new Koa();
 front.use(serve(path.join('~/utsa-stacksearch/src')))
-router.post("/stackserve.js", async (ctx, next) => {
+router.post("/", async (ctx, next) => {
 	const client = new Client({
 		user: 'Flamdini',
 		host: 'stackpost.crymkd1bcdxk.us-east-1.rds.amazonaws.com',
