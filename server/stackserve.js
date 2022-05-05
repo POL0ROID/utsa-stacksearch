@@ -163,6 +163,6 @@ app.use( parser() );
 app.use( cors() );
 app.use( router.routes() );
 console.log("Server is listening.");
-//app.listen(3002);
-app.listen(443);
+app.listen(3002);
+//app.listen(443);
 //httpssl.listen(3002, err => {if (err) console.log(err); });
