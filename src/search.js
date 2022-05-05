@@ -44,7 +44,7 @@ class Search extends React.Component {
             headers: {
                 'Accept': '*/*',
                 'Content-Type': 'application/json;charset=UTF-8',
-                'Access-Control-Allow-Origin': 'https://zcxlabs.redtype.consulting:3002/stackserve.js',
+                'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
                 'Access-Control-Allow-Methods': 'POST',
                 'Access-Control-Allow-Credentials': true,
