@@ -9,7 +9,7 @@ const parser = require('koa-bodyparser');
 const serve = ('koa-static');
 const app = new Koa();
 const router = new Router();
-app.use(serve('/', opts));
+app.use(serve('/');
 
 router.post("/stackserve.js", async (ctx, next) => {
 	const client = new Client({
