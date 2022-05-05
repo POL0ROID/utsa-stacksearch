@@ -7,10 +7,11 @@ const fs = require('fs');
 const path = require('path');
 const parser = require('koa-bodyparser');
 const serve = require('koa-static');
+const mount = require('koa-mount');
 const app = new Koa();
 const router = new Router();
-//app.use(serve(path.join('~/utsa-stacksearch/server')));
-
+const front = new Koa();
+front.use(serve(path.join('~/utsa-stacksearch/src/App.js')))
 router.post("/stackserve.js", async (ctx, next) => {
 	const client = new Client({
 		user: 'Flamdini',
@@ -151,13 +152,13 @@ function fieldInjector(textarray, field, boolq, boola){
 	return outstring;
 };
 
-//let httpssl = https.createServer(
-//	{
-//		key: fs.readFileSync(path.join(__dirname, './.ssl/key.pem'), 'utf8'),
-//		cert: fs.readFileSync(path.join(__dirname, './.ssl/cert.pem'), 'utf8')
-//	},
-//	app.callback()
-//);
+let httpssl = https.createServer(
+	{
+		key: fs.readFileSync(path.join(__dirname, './.ssl/key.pem'), 'utf8'),
+		cert: fs.readFileSync(path.join(__dirname, './.ssl/cert.pem'), 'utf8')
+	},
+	app.callback()
+);
 
 app.use( parser() );
 app.use( cors() );
