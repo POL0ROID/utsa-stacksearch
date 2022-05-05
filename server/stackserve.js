@@ -6,7 +6,7 @@ const { Pool, Client } = require('pg');
 const fs = require('fs');
 const path = require('path');
 const parser = require('koa-bodyparser');
-const serve = ('koa-static');
+const {serve} = ('koa-static');
 const app = new Koa();
 const router = new Router();
 app.use(serve('/'));
