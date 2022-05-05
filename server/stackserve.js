@@ -11,7 +11,7 @@ const mount = require('koa-mount');
 const app = new Koa();
 const router = new Router();
 const front = new Koa();
-front.use(serve(path.join('~/utsa-stacksearch/src/App.js')))
+front.use(serve(path.join('~/utsa-stacksearch/src')))
 router.post("/stackserve.js", async (ctx, next) => {
 	const client = new Client({
 		user: 'Flamdini',
@@ -49,7 +49,7 @@ router.post("/stackserve.js", async (ctx, next) => {
 	});
 });
 
-router.get("/stackserve.js", ctx => {
+router.get("/", ctx => {
 	console.log("GET received.");
 	ctx.status=200;
 });

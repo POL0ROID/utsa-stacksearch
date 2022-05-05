@@ -35,7 +35,7 @@ class Search extends React.Component {
     handleSubmit = async (event) => {
         alert("Submitted")
         event.preventDefault();            
-        const url = 'https://zcxlabs.redtype.consulting:443/stackserve.js'
+        const url = 'https://zcxlabs.redtype.consulting/'
         // const url = 'http://ec2-3-94-209-176.compute-1.amazonaws.com:3001/stackserve.js'
         // const url = 'localhost:3001/stackserve.js'
         const options = {
@@ -51,7 +51,7 @@ class Search extends React.Component {
             },
             body: JSON.stringify(this.state)
         };
-        let res = await fetch(url, options)
+        await fetch(url, options)
             .then(response => console.log(response));
     }
 
@@ -85,9 +85,9 @@ class Search extends React.Component {
                             <input type="text" name="scoremin" id="ascoremin" size="2" value={this.state.scoremin} onChange={this.handleChange}/><label>Score</label><br />
                     Maximum:<input type="datetime-local" name="datemax" id="adatemax" value={this.state.datemax} onChange={this.handleChange}/><label>Date </label>
                             <input type="text" name="scoremax" id="ascoremax" size="2" value={this.state.scoremax} onChange={this.handleChange}/><label>Score</label><br />
-                    <textarea name="body" id="body" rows="1" value={this.state.body} onChange={this.handleChange}/>< br/>
-                    <select name="table" id="table" value={this.state.table} onChange={this.handleChange}></select><label>Category</label><br />
-                    <input type="submit" name="submit" id="submit" value="Submit"></input>
+                    <textarea name="body" id="body" rows="1" value={this.state.body} onChange={this.handleChange}/><label>Body</label>< br/>
+                    <select name="table" id="table" value={this.state.table} onChange={this.handleChange}><option value="stackoverflow"></select><label>Category</label><br />
+                    <input type="submit" name="submit" id="submit" value="Submit"></input><
                 </form>
             </div>
             </div>
